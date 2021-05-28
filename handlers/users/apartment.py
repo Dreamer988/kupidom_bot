@@ -24,9 +24,9 @@ load_dotenv()
 
 
 def google_sendler(sheet_id, start_col, end_col, array_data):
-
+    CREDENTAILS_FILE = '../../creds.json'
     credentials = ServiceAccountCredentials.from_json_keyfile_name(
-        os.getenv('credentails_file'),
+        CREDENTAILS_FILE,
         ['https://www.googleapis.com/auth/spreadsheets',
          'https://www.googleapis.com/auth/drive'])
     httpAuth = credentials.authorize(httplib2.Http())

@@ -10,7 +10,7 @@ load_dotenv()
 
 
 def google_sendler():
-    CREDENTAILS_FILE = '../creds.json'
+    CREDENTAILS_FILE = '../../creds.json'
     credentials = ServiceAccountCredentials.from_json_keyfile_name(
         CREDENTAILS_FILE,
         ['https://www.googleapis.com/auth/spreadsheets',

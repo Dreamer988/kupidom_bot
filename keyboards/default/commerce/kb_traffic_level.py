@@ -13,5 +13,7 @@ kb_traffic_level = ReplyKeyboardMarkup(
         [
             KeyboardButton(text='Оживленная проезжая часть и высокая проходимость'),
         ]
-    ]
+    ],
+    resize_keyboard=True,
+    one_time_keyboard=True,
 )

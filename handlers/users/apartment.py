@@ -10,7 +10,7 @@ from keyboards.default.apartment import kb_district, kb_location_the_road, kb_ty
     kb_technics, kb_air_conditioning
 from keyboards.default.apartment import kb_main_menu
 from loader import dp
-from states import MenuState, ApartmentState
+from states import ObjectState, ApartmentState
 from datetime import date
 
 from pprint import pprint
@@ -24,8 +24,9 @@ load_dotenv()
 
 
 def google_sendler(sheet_id, start_col, end_col, array_data):
+    CREDENTAILS_FILE = "C:/Users/User/Desktop/udemy_course-master/creds.json"
     credentials = ServiceAccountCredentials.from_json_keyfile_name(
-        os.getenv('credentails_file'),
+        CREDENTAILS_FILE,
         ['https://www.googleapis.com/auth/spreadsheets',
          'https://www.googleapis.com/auth/drive'])
     httpAuth = credentials.authorize(httplib2.Http())
@@ -34,7 +35,7 @@ def google_sendler(sheet_id, start_col, end_col, array_data):
 
     values = service.spreadsheets().values().get(
         spreadsheetId=spreadsheet_id,
-        range="A:A",
+        range="Продажа квартиры!A:A",
         majorDimension="COLUMNS"
     ).execute()
     pprint(values['values'][0])
@@ -44,7 +45,7 @@ def google_sendler(sheet_id, start_col, end_col, array_data):
 
     values = service.spreadsheets().values().append(
         spreadsheetId=spreadsheet_id,
-        range=f"A{start_range}",
+        range=f"Продажа квартиры!A{start_range}",
         valueInputOption="USER_ENTERED",
         body={
             "values": [['']]
@@ -66,8 +67,8 @@ def google_sendler(sheet_id, start_col, end_col, array_data):
     ).execute()
 
 
-# Отслеживаем сообщение по фильтру состояния MenuState.Q3
-@dp.message_handler(text="Квартира", state=MenuState.Q3)
+# Отслеживаем сообщение по фильтру состояния MenuState.Sale
+@dp.message_handler(text="Квартира", state=ObjectState.Sale)
 async def select_district(message: types.Message, state=FSMContext):
     # Получаем текст сообщения, а после записываем значение в переменную district
     type_of_service = message.text
@@ -376,7 +377,7 @@ async def select_district(message: types.Message, state=FSMContext):
     condition = message.text
 
     await state.update_data(var_condition=condition)
-    await message.answer(f"Укажите имя собственника")
+    await message.answer(f"Укажите имя собственника", reply_markup=ReplyKeyboardRemove())
     await ApartmentState.next()
 
 
@@ -416,7 +417,7 @@ async def select_district(message: types.Message, state=FSMContext):
     informant = message.text
 
     await state.update_data(var_informant=informant)
-    await message.answer(f"Укажите стартовую цену ( $ )")
+    await message.answer(f"Укажите стартовую цену ( $ )", reply_markup=ReplyKeyboardRemove())
     await ApartmentState.next()
 
 
@@ -476,7 +477,7 @@ async def select_district(message: types.Message, state=FSMContext):
     exclusive = message.text
 
     await state.update_data(var_exclusive=exclusive)
-    await message.answer(f"Напишите полное описание квартиры")
+    await message.answer(f"Напишите полное описание квартиры", reply_markup=ReplyKeyboardRemove())
     await ApartmentState.next()
 
 
@@ -505,7 +506,7 @@ async def select_district(message: types.Message, state=FSMContext):
 async def select_district(message: types.Message, state=FSMContext):
     filled_in_correctly = message.text
     answer = await state.get_data()
-    user_name = message.from_user.first_name
+    user_name = message.from_user.full_name
 
     if filled_in_correctly.lower() == 'да':
         dt_time = str(date.today())
@@ -561,10 +562,11 @@ async def select_district(message: types.Message, state=FSMContext):
         list_answer.append(answer['var_under_to_office'])
         list_answer.append(answer['var_exclusive'])
         list_answer.append(answer['var_public'])
-        google_sendler('1-B80joNKTOSTIJRLiACOcfH1E3dH5yrNPbS-CU5Bvxc', 'A', 'AX', list_answer)
+        google_sendler('1-B80joNKTOSTIJRLiACOcfH1E3dH5yrNPbS-CU5Bvxc', 'Продажа квартиры!A', 'AX', list_answer)
         await message.answer('Ваша объективка отправлена)', reply_markup=kb_main_menu)
         await state.reset_state()
     elif filled_in_correctly.lower() == 'нет':
-        await state.update_data(var_filled_in_correctly=filled_in_correctly)
+        await message.answer('Вы отменили отправку', reply_markup=kb_main_menu)
+        await state.reset_state()
     else:
         await message.answer('Отправлено не верное значение( Попробуйте снова')

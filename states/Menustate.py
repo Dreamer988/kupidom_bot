@@ -2,6 +2,7 @@ from aiogram.dispatcher.filters.state import State, StatesGroup
 
 
 class MenuState(StatesGroup):
-    Q1 = State()
-    Q2 = State()
-    Q3 = State()
+    Object = State()
+    BySell = State()
+    Search = State()
+    Broker = State()

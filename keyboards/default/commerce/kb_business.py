@@ -1,13 +1,12 @@
 from aiogram.types import KeyboardButton, ReplyKeyboardMarkup
 
-kb_air_conditioning = ReplyKeyboardMarkup(
+kb_business = ReplyKeyboardMarkup(
     keyboard=[
         [
-            KeyboardButton(text='Да'),
-            KeyboardButton(text='Нет')
+            KeyboardButton(text='Рабочий бизнес'),
         ],
         [
-            KeyboardButton(text='2 и более')
+            KeyboardButton(text='Рабочий бизнес с фирмой')
         ]
     ],
     resize_keyboard=True,

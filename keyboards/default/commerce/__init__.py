@@ -16,3 +16,10 @@ from .kb_type_of_building import kb_type_of_building
 from .kb_completed_building import kb_completed_building
 from .kb_non_residential import kb_non_residential
 from .kb_freestanding import kb_freestanding
+from .kb_appointment import kb_appointment
+from .kb_tenants import kb_tenants
+from .kb_power_supply import kb_power_supply
+from .kb_sewerage import kb_sewerage
+from .kb_system_gas import kb_system_gas
+from .kb_system_heating import kb_system_heating
+from .kb_business import kb_business

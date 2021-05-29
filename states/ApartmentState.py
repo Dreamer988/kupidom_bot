@@ -45,3 +45,7 @@ class ApartmentState(StatesGroup):
     Q41 = State()
     Q42 = State()
     Q43 = State()
+    Q44 = State()
+    Q45 = State()
+    Q46 = State()
+    Q47 = State()

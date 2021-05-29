@@ -4,11 +4,11 @@ from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.types import ReplyKeyboardRemove
 
-from keyboards.default import kb_district, kb_location_the_road, kb_type_of_building, kb_type_of_layout, \
+from keyboards.default.apartment import kb_district, kb_location_the_road, kb_type_of_building, kb_type_of_layout, \
     kb_apartment_layout, kb_redevelopment, kb_side_building, kb_elevator_condition, kb_roof_condition, kb_type_parking, \
     kb_distance_to_metro, kb_yes_or_no, kb_registration_date, kb_furniture, kb_balcony_size, kb_repair, kb_toilet, \
     kb_technics, kb_air_conditioning
-from keyboards.default import kb_main_menu
+from keyboards.default.apartment import kb_main_menu
 from loader import dp
 from states import MenuState, ApartmentState
 from datetime import date
@@ -24,9 +24,8 @@ load_dotenv()
 
 
 def google_sendler(sheet_id, start_col, end_col, array_data):
-    CREDENTAILS_FILE = '../../creds.json'
     credentials = ServiceAccountCredentials.from_json_keyfile_name(
-        CREDENTAILS_FILE,
+        os.getenv('credentails_file'),
         ['https://www.googleapis.com/auth/spreadsheets',
          'https://www.googleapis.com/auth/drive'])
     httpAuth = credentials.authorize(httplib2.Http())
@@ -48,7 +47,7 @@ def google_sendler(sheet_id, start_col, end_col, array_data):
         range=f"A{start_range}",
         valueInputOption="USER_ENTERED",
         body={
-                "values": [['']]
+            "values": [['']]
         }
     ).execute()
 
@@ -68,7 +67,7 @@ def google_sendler(sheet_id, start_col, end_col, array_data):
 
 
 # Отслеживаем сообщение по фильтру состояния MenuState.Q3
-@dp.message_handler(state=MenuState.Q3)
+@dp.message_handler(text="Квартира", state=MenuState.Q3)
 async def select_district(message: types.Message, state=FSMContext):
     # Получаем текст сообщения, а после записываем значение в переменную district
     type_of_service = message.text

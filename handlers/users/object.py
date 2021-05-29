@@ -1,6 +1,6 @@
 from aiogram import types
 
-from keyboards.default import kb_type_of_property
+from keyboards.default.apartment import kb_type_of_property
 from loader import dp
 
 

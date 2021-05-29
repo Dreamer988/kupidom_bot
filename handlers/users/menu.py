@@ -2,7 +2,7 @@ from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
 
-from keyboards.default import kb_type_of_property, kb_type_of_service, kb_object_menu
+from keyboards.default.apartment import kb_type_of_property, kb_type_of_service, kb_object_menu
 from loader import dp
 from states import MenuState
 

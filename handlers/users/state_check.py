@@ -1,7 +1,7 @@
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.builtin import Command
-from keyboards.default import kb_main_menu
+from keyboards.default.apartment import kb_main_menu
 
 from loader import dp
 

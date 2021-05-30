@@ -11,6 +11,7 @@ class CommerceState(StatesGroup):
     Q7 = State()
     Q8 = State()
     Q9 = State()
+    Infrastructure = State()
     Q10 = State()
     Q11 = State()
     Q12 = State()

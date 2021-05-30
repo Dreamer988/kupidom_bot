@@ -1,24 +1,18 @@
-import os
-
-from aiogram import types
-from aiogram.dispatcher import FSMContext
-from aiogram.types import ReplyKeyboardRemove
-
-from keyboards.default.apartment import kb_district, kb_location_the_road, kb_type_of_building, kb_type_of_layout, \
-    kb_apartment_layout, kb_redevelopment, kb_side_building, kb_elevator_condition, kb_roof_condition, kb_type_parking, \
-    kb_distance_to_metro, kb_yes_or_no, kb_registration_date, kb_furniture, kb_balcony_size, kb_repair, kb_toilet, \
-    kb_technics, kb_air_conditioning
-from keyboards.default.apartment import kb_main_menu
-from loader import dp
-from states import ObjectState, ApartmentState
 from datetime import date
-
-from pprint import pprint
 
 import googleapiclient.discovery
 import httplib2
+from aiogram import types
+from aiogram.dispatcher import FSMContext
+from aiogram.types import ReplyKeyboardRemove
 from dotenv import load_dotenv
 from oauth2client.service_account import ServiceAccountCredentials
+
+from keyboards.default.apartment import kb_yes_or_no
+from keyboards.default.apartment import kb_main_menu
+from loader import dp
+from states import EditObjectState
+from states import ObjectState
 
 load_dotenv()
 
@@ -35,17 +29,15 @@ def google_sendler(sheet_id, start_col, end_col, array_data):
 
     values = service.spreadsheets().values().get(
         spreadsheetId=spreadsheet_id,
-        range="Продажа квартиры!A:A",
+        range=f"{start_col}:{end_col}",
         majorDimension="COLUMNS"
     ).execute()
-    pprint(values['values'][0])
-    pprint(len(values['values'][0]))
     start_range = len(values['values'][0]) + 1
     sheet_range = f"{start_col}{start_range}:{end_col}{start_range}"
 
     values = service.spreadsheets().values().append(
         spreadsheetId=spreadsheet_id,
-        range=f"Продажа квартиры!A{start_range}",
+        range=f"{start_col}{start_range}",
         valueInputOption="USER_ENTERED",
         body={
             "values": [['']]
@@ -67,15 +59,67 @@ def google_sendler(sheet_id, start_col, end_col, array_data):
     ).execute()
 
 
-# Отслеживаем сообщение по фильтру состояния MenuState.Sale
-@dp.message_handler(text="Квартира", state=ObjectState.Sale)
-async def select_district(message: types.Message, state=FSMContext):
-    # Получаем текст сообщения, а после записываем значение в переменную district
-    type_of_service = message.text
+# Отслеживаем сообщение по фильтру состояния ObjectState.Edit
+@dp.message_handler(state=ObjectState.Edit)
+async def select_property(message: types.Message, state=FSMContext):
+    type_of_property = message.text
+    await state.update_data(var_type_of_property=type_of_property)
+    await message.answer('Введите ID объекта', reply_markup=ReplyKeyboardRemove())
+    await EditObjectState.Q1.set()
 
-    # Записываем полученное значение в словарь машины состояний под ключом var_type_of_service
-    await state.update_data(var_type_of_service=type_of_service)
-    # Отправляем сообщение и массив кнопок
-    await message.answer("Выберите район", reply_markup=kb_district)
-    # Переходим в машину состояний ApartmentState
-    await ApartmentState.first()
+
+# Состояние EditObjectState.Q1  -->  Введите ID объекта
+@dp.message_handler(state=EditObjectState.Q1)
+async def set_id_object(message: types.Message, state=FSMContext):
+    id_object = message.text
+    await state.update_data(var_id_object=id_object)
+    await message.answer('Введите стартовую цену  (Пример: 28000)', reply_markup=ReplyKeyboardRemove())
+    await EditObjectState.next()
+
+
+# Состояние EditObjectState.Q2  -->  Введите имя агента на которого записан этот объект
+@dp.message_handler(state=EditObjectState.Q2)
+async def set_start_price(message: types.Message, state=FSMContext):
+    start_price = message.text
+    await state.update_data(var_start_price=start_price)
+    await message.answer(
+        'Введите общую цену  Пример: \n28000\n27500\n27000\n________________\n Если аренда введите  - Предоплату (Пример : 1 месяц)',
+        reply_markup=ReplyKeyboardRemove())
+    await EditObjectState.next()
+
+
+# Состояние EditObjectState.Q3  -->  Введите имя агента на которого записан этот объект
+@dp.message_handler(state=EditObjectState.Q3)
+async def set_start_price(message: types.Message, state=FSMContext):
+    full_price = message.text
+    await state.update_data(var_full_price=full_price)
+    await message.answer('Вы ввели все верно?', reply_markup=kb_yes_or_no)
+    await EditObjectState.next()
+
+
+# Состояние ApartmentState.Q4  -->  Все заполнил(-а) правильно ?
+@dp.message_handler(state=EditObjectState.Q4)
+async def select_district(message: types.Message, state=FSMContext):
+    filled_in_correctly = message.text
+    answer = await state.get_data()
+    user_name = message.from_user.full_name
+
+    if filled_in_correctly.lower() == 'да':
+        dt_time = str(date.today())
+        answer = await state.get_data()
+        list_answer = []
+        list_answer.append(answer['var_id_object'])
+        list_answer.append(answer['var_type_of_property'])
+        list_answer.append(answer['var_start_price'])
+        list_answer.append(answer['var_full_price'])
+        list_answer.append(user_name)
+        list_answer.append('')
+        list_answer.append(dt_time)
+        google_sendler('1D41UHIXRICwbW6X_ZCMr0fW5ETB75RGars2Ci7AQFUg', 'Изменение!A', 'G', list_answer)
+        await message.answer('Объект отправлен на изменение)', reply_markup=kb_main_menu)
+        await state.reset_state()
+    elif filled_in_correctly.lower() == 'нет':
+        await message.answer('Вы отменили отправку', reply_markup=kb_main_menu)
+        await state.reset_state()
+    else:
+        await message.answer('Отправлено не верное значение( Попробуйте снова')

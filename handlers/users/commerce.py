@@ -1,24 +1,21 @@
-import os
+from datetime import date
+from pprint import pprint
 
+import googleapiclient.discovery
+import httplib2
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.types import ReplyKeyboardRemove
+from dotenv import load_dotenv
+from oauth2client.service_account import ServiceAccountCredentials
 
 from keyboards.default.commerce import kb_district, kb_location_the_road, kb_traffic_level, kb_distance_to_metro, \
     kb_toilet, kb_furniture, kb_technics, kb_number_of_buildings, kb_yes_or_no, kb_side_building, kb_type_parking, \
     kb_main_menu, kb_security, kb_repair, kb_type_of_building, kb_completed_building, kb_non_residential, \
     kb_freestanding, kb_appointment, kb_tenants, kb_power_supply, kb_sewerage, kb_system_gas, kb_system_heating, \
-    kb_business
+    kb_business, kb_infrastructure, kb_number_floor, kb_number_room
 from loader import dp
 from states import ObjectState, CommerceState
-from datetime import date
-
-from pprint import pprint
-
-import googleapiclient.discovery
-import httplib2
-from dotenv import load_dotenv
-from oauth2client.service_account import ServiceAccountCredentials
 
 load_dotenv()
 
@@ -35,17 +32,15 @@ def google_sendler(sheet_id, start_col, end_col, array_data):
 
     values = service.spreadsheets().values().get(
         spreadsheetId=spreadsheet_id,
-        range="Продажа коммерции!A:A",
+        range=f"{start_col}:{end_col}",
         majorDimension="COLUMNS"
     ).execute()
-    pprint(values['values'][0])
-    pprint(len(values['values'][0]))
     start_range = len(values['values'][0]) + 1
     sheet_range = f"{start_col}{start_range}:{end_col}{start_range}"
 
     values = service.spreadsheets().values().append(
         spreadsheetId=spreadsheet_id,
-        range=f"Продажа коммерции!A{start_range}",
+        range=f"{start_col}{start_range}",
         valueInputOption="USER_ENTERED",
         body={
             "values": [['']]
@@ -158,7 +153,23 @@ async def select_district(message: types.Message, state=FSMContext):
 
     await state.update_data(var_distance_to_metro=distance_to_metro)
     await message.answer("Укажите инфраструктуру (дет.сад, магазин, больницы, транспортная развязка и т.д.)",
-                         reply_markup=ReplyKeyboardRemove())
+                         reply_markup=kb_infrastructure)
+    await CommerceState.next()
+
+
+# Состояние CommerceState.Infrastructure  -->  Укажите инфраструктуру
+@dp.message_handler(text="Готово ✅", state=CommerceState.Infrastructure)
+async def select_district(message: types.Message, state=FSMContext):
+    answer = await state.get_data()
+    infrastructures = answer['var_infrastructures']
+    separator = ','
+    infrastructures = separator.join(infrastructures)
+
+    await message.answer(f'Инфраструктура которую вы выбрали: {infrastructures}')
+    await message.answer("/--/--/--/--/--/--/------/--/--/--/--/--/--/--/")
+    await state.update_data(var_infrastructures=infrastructures)
+
+    await message.answer("Укажите количество комнат", reply_markup=kb_number_room)
     await CommerceState.next()
 
 
@@ -166,10 +177,22 @@ async def select_district(message: types.Message, state=FSMContext):
 @dp.message_handler(state=CommerceState.Q9)
 async def select_district(message: types.Message, state=FSMContext):
     infrastructure = message.text
+    infrastructures = list()
+    infrastructures.append(infrastructure)
+    await state.update_data(var_infrastructures=infrastructures)
+    await message.answer("Выберите еще варианты или нажмите на кнопку 'Готово ✅", reply_markup=kb_infrastructure)
+    await CommerceState.Infrastructure.set()
 
-    await state.update_data(var_infrastructure=infrastructure)
-    await message.answer("Укажите количество комнат", reply_markup=ReplyKeyboardRemove())
-    await CommerceState.next()
+
+# Состояние CommerceState.Infrastructure  -->  Повтор
+@dp.message_handler(state=CommerceState.Infrastructure)
+async def select_district(message: types.Message, state=FSMContext):
+    infrastructure = message.text
+    answer = await state.get_data()
+    infrastructures = answer['var_infrastructures']
+    infrastructures.append(infrastructure)
+    await state.update_data(var_infrastructures=infrastructures)
+    await message.answer(f"{infrastructures}", reply_markup=kb_infrastructure)
 
 
 # Состояние CommerceState.Q10  -->  Укажите количество комнат
@@ -178,7 +201,7 @@ async def select_district(message: types.Message, state=FSMContext):
     counter_room = message.text
 
     await state.update_data(var_counter_room=counter_room)
-    await message.answer("Укажите этаж", reply_markup=ReplyKeyboardRemove())
+    await message.answer("Укажите этаж", reply_markup=kb_number_floor)
     await CommerceState.next()
 
 
@@ -188,7 +211,7 @@ async def select_district(message: types.Message, state=FSMContext):
     floor = message.text
 
     await state.update_data(var_floor=floor)
-    await message.answer("Укажите этажность", reply_markup=ReplyKeyboardRemove())
+    await message.answer("Укажите этажность", reply_markup=kb_number_floor)
     await CommerceState.next()
 
 
@@ -414,8 +437,8 @@ async def select_district(message: types.Message, state=FSMContext):
     appointments = separator.join(appointments)
 
     await state.update_data(var_appointment=appointments)
-    await message.answer(f"Выбранные вами назначения {appointments}", reply_markup=kb_tenants)
-    await message.answer("------------//////////////////////----------", reply_markup=kb_tenants)
+    await message.answer(f"Выбранные вами назначения {appointments}")
+    await message.answer("/--/--/--/--/--/--/------/--/--/--/--/--/--/--/")
     await message.answer("Имеются ли арендаторы?", reply_markup=kb_tenants)
     await CommerceState.next()
 
@@ -488,7 +511,7 @@ async def select_district(message: types.Message, state=FSMContext):
     system_heating = message.text
 
     await state.update_data(var_system_heating=system_heating)
-    await message.answer(f"Укажите стартовую цену ( $ )")
+    await message.answer(f"Укажите стартовую цену ( $ )", reply_markup=ReplyKeyboardRemove())
     await CommerceState.next()
 
 
@@ -498,7 +521,7 @@ async def select_district(message: types.Message, state=FSMContext):
     price = message.text
 
     await state.update_data(var_price=price)
-    await message.answer(f"Стартовая\nС процентами\nЦена на руки")
+    await message.answer(f"Стартовая\nС процентами\nЦена на руки", reply_markup=ReplyKeyboardRemove())
     await CommerceState.next()
 
 
@@ -508,7 +531,7 @@ async def select_district(message: types.Message, state=FSMContext):
     full_price = message.text
 
     await state.update_data(var_full_price=full_price)
-    await message.answer(f"Укажите имя собственника")
+    await message.answer(f"Укажите имя собственника", reply_markup=ReplyKeyboardRemove())
     await CommerceState.next()
 
 
@@ -518,7 +541,8 @@ async def select_district(message: types.Message, state=FSMContext):
     owner = message.text
 
     await state.update_data(var_owner=owner)
-    await message.answer(f"Введите контактный номер телефона собственника. \nПример ввода  987777777")
+    await message.answer(f"Введите контактный номер телефона собственника. \nПример ввода  987777777",
+                         reply_markup=ReplyKeyboardRemove())
     await CommerceState.next()
 
 
@@ -528,7 +552,7 @@ async def select_district(message: types.Message, state=FSMContext):
     number_phone = message.text
 
     await state.update_data(var_number_phone=number_phone)
-    await message.answer(f"Если имеется дополнительный номер телефона, введите его")
+    await message.answer(f"Если имеется дополнительный номер телефона, введите его", reply_markup=ReplyKeyboardRemove())
     await CommerceState.next()
 
 
@@ -610,10 +634,10 @@ async def select_district(message: types.Message, state=FSMContext):
         list_answer.append(answer['var_land_area'])  # O --> Площадь земли
         list_answer.append(answer['var_non_residential'])  # P --> Переведено в нежилое
         list_answer.append(answer['var_ceiling_height'])  # Q --> Высота потолков
-        list_answer.append(' ')  # R --> Описание
+        list_answer.append('')  # R --> Описание
         list_answer.append(answer['var_traffic_level'])  # S --> Проходимость
         list_answer.append(answer['var_add_territory'])  # T --> Доп.территория
-        list_answer.append(' ')  # U --> Описание территории
+        list_answer.append('')  # U --> Описание территории
         list_answer.append(answer['var_completed_building'])  # V --> Завершено строительство
         list_answer.append(answer['var_type_parking'])  # W --> Парковка
         list_answer.append(answer['var_price'])  # X --> Стартовая цена
@@ -621,7 +645,7 @@ async def select_district(message: types.Message, state=FSMContext):
         list_answer.append(answer['var_owner'])  # Z --> Имя собственника
         list_answer.append(answer['var_number_phone'])  # AA --> Номер телефона
         list_answer.append(answer['var_additional_number_phone'])  # AB --> Доп.номер
-        list_answer.append(' ')  # AC --> Зарубежный номер
+        list_answer.append('')  # AC --> Зарубежный номер
         list_answer.append(answer['var_location_the_road'])  # AD --> Расположение от дороги
         list_answer.append(answer['var_side_building'])  # AE --> Расположение в здании
         list_answer.append(answer['var_number_home'])  # AF --> Номер дома
@@ -629,13 +653,13 @@ async def select_district(message: types.Message, state=FSMContext):
         list_answer.append(answer['var_business'])  # AH --> Бизнес
         list_answer.append(answer['var_public'])  # AI --> Торг.точка
         list_answer.append(answer['var_tenants'])  # AG --> Арендаторы
-        list_answer.append(' ')  # AK --> Заголовок
+        list_answer.append('')  # AK --> Заголовок
         list_answer.append(answer['var_description'])  # AL --> Описание
         list_answer.append(user_name)  # AM --> Имя агента
         list_answer.append(dt_time)  # AN --> Дата создания
         list_answer.append(dt_time)  # AO --> Дата обзвона
         list_answer.append(answer['var_informant'])  # AP --> Информатор
-        list_answer.append(' ')  # AQ --> Ссылка domkupi
+        list_answer.append('')  # AQ --> Ссылка domkupi
         list_answer.append(answer['var_infrastructure'])  # AR --> Инфраструктура
         list_answer.append(answer['var_distance_to_metro'])  # AS --> Метро
         list_answer.append(answer['var_system_heating'])  # AT --> Отопление

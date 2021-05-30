@@ -1,24 +1,21 @@
-import os
-
-from aiogram import types
-from aiogram.dispatcher import FSMContext
-from aiogram.types import ReplyKeyboardRemove
-
-from keyboards.default.apartment import kb_district, kb_location_the_road, kb_type_of_building, kb_type_of_layout, \
-    kb_apartment_layout, kb_redevelopment, kb_side_building, kb_elevator_condition, kb_roof_condition, kb_type_parking, \
-    kb_distance_to_metro, kb_yes_or_no, kb_registration_date, kb_furniture, kb_balcony_size, kb_repair, kb_toilet, \
-    kb_technics, kb_air_conditioning
-from keyboards.default.apartment import kb_main_menu
-from loader import dp
-from states import ObjectState, ApartmentState
 from datetime import date
-
 from pprint import pprint
 
 import googleapiclient.discovery
 import httplib2
+from aiogram import types
+from aiogram.dispatcher import FSMContext
+from aiogram.types import ReplyKeyboardRemove
 from dotenv import load_dotenv
 from oauth2client.service_account import ServiceAccountCredentials
+
+from keyboards.default.apartment import kb_district, kb_location_the_road, kb_type_of_building, kb_type_of_layout, \
+    kb_apartment_layout, kb_redevelopment, kb_side_building, kb_elevator_condition, kb_roof_condition, kb_type_parking, \
+    kb_distance_to_metro, kb_yes_or_no, kb_registration_date, kb_furniture, kb_balcony_size, kb_repair, kb_toilet, \
+    kb_technics, kb_air_conditioning, kb_infrastructure, kb_number_room, kb_number_floor, kb_ceiling_height
+from keyboards.default.apartment import kb_main_menu
+from loader import dp
+from states import ObjectState, ApartmentState
 
 load_dotenv()
 
@@ -35,17 +32,15 @@ def google_sendler(sheet_id, start_col, end_col, array_data):
 
     values = service.spreadsheets().values().get(
         spreadsheetId=spreadsheet_id,
-        range="Продажа квартиры!A:A",
+        range=f"{start_col}:{end_col}",
         majorDimension="COLUMNS"
     ).execute()
-    pprint(values['values'][0])
-    pprint(len(values['values'][0]))
     start_range = len(values['values'][0]) + 1
     sheet_range = f"{start_col}{start_range}:{end_col}{start_range}"
 
     values = service.spreadsheets().values().append(
         spreadsheetId=spreadsheet_id,
-        range=f"Продажа квартиры!A{start_range}",
+        range=f"{start_col}{start_range}",
         valueInputOption="USER_ENTERED",
         body={
             "values": [['']]
@@ -97,7 +92,7 @@ async def select_district(message: types.Message, state=FSMContext):
     quarter = message.text
 
     await state.update_data(var_quarter=quarter)
-    await message.answer("Укажите улицу на которой находится дом")
+    await message.answer("Укажите улицу на которой находится дом", reply_markup=ReplyKeyboardRemove())
     await ApartmentState.next()
 
 
@@ -107,7 +102,7 @@ async def select_district(message: types.Message, state=FSMContext):
     street = message.text
 
     await state.update_data(var_street=street)
-    await message.answer("Укажите ориентир")
+    await message.answer("Укажите ориентир", reply_markup=ReplyKeyboardRemove())
     await ApartmentState.next()
 
 
@@ -117,18 +112,47 @@ async def select_district(message: types.Message, state=FSMContext):
     reference_point = message.text
 
     await state.update_data(var_reference_point=reference_point)
-    await message.answer("Укажите инфраструктуру (дет.сад, магазин, больницы, транспортная развязка и т.д.)")
+    await message.answer("Укажите инфраструктуру (дет.сад, магазин, больницы, транспортная развязка и т.д.)",
+                         reply_markup=kb_infrastructure)
     await ApartmentState.next()
 
 
-# Состояние ApartmentState.Q5  -->  Укажите инфраструктуру
+# Состояние CommerceState.Infrastructure  -->  Укажите инфраструктуру
+@dp.message_handler(text="Готово ✅", state=ApartmentState.Infrastructure)
+async def select_district(message: types.Message, state=FSMContext):
+    answer = await state.get_data()
+    infrastructures = answer['var_infrastructures']
+    separator = ','
+    infrastructures = separator.join(infrastructures)
+
+    await message.answer(f'Инфраструктура которую вы выбрали: {infrastructures}')
+    await message.answer("/--/--/--/--/--/--/------/--/--/--/--/--/--/--/")
+    await state.update_data(var_infrastructures=infrastructures)
+
+    await message.answer("Выберите расположение от дороги", reply_markup=kb_location_the_road)
+    await ApartmentState.next()
+
+
+# Состояние CommerceState.Q5  -->  Укажите инфраструктуру (дет.сад, магазин, больницы, транспортная развязка и т.д.)
 @dp.message_handler(state=ApartmentState.Q5)
 async def select_district(message: types.Message, state=FSMContext):
     infrastructure = message.text
+    infrastructures = list()
+    infrastructures.append(infrastructure)
+    await state.update_data(var_infrastructures=infrastructures)
+    await message.answer("Выберите еще варианты или нажмите на кнопку 'Готово ✅", reply_markup=kb_infrastructure)
+    await ApartmentState.Infrastructure.set()
 
-    await state.update_data(var_infrastructure=infrastructure)
-    await message.answer("Выберите расположение от дороги", reply_markup=kb_location_the_road)
-    await ApartmentState.next()
+
+# Состояние CommerceState.Infrastructure  -->  Повтор
+@dp.message_handler(state=ApartmentState.Infrastructure)
+async def select_district(message: types.Message, state=FSMContext):
+    infrastructure = message.text
+    answer = await state.get_data()
+    infrastructures = answer['var_infrastructures']
+    infrastructures.append(infrastructure)
+    await state.update_data(var_infrastructures=infrastructures)
+    await message.answer(f"{infrastructures}", reply_markup=kb_infrastructure)
 
 
 # Состояние ApartmentState.Q6  -->  Выберите расположение от дороги
@@ -137,7 +161,7 @@ async def select_district(message: types.Message, state=FSMContext):
     location_the_road = message.text
 
     await state.update_data(var_location_the_road=location_the_road)
-    await message.answer(f"Укажите номер дома")
+    await message.answer(f"Укажите номер дома", reply_markup=ReplyKeyboardRemove())
     await ApartmentState.next()
 
 
@@ -147,7 +171,7 @@ async def select_district(message: types.Message, state=FSMContext):
     number_home = message.text
 
     await state.update_data(var_number_home=number_home)
-    await message.answer(f"Укажите номер квартиры")
+    await message.answer(f"Укажите номер квартиры", reply_markup=ReplyKeyboardRemove())
     await ApartmentState.next()
 
 
@@ -247,7 +271,7 @@ async def select_district(message: types.Message, state=FSMContext):
     distance_to_metro = message.text
 
     await state.update_data(var_distance_to_metro=distance_to_metro)
-    await message.answer(f"Укажите количество комнат")
+    await message.answer(f"Укажите количество комнат", reply_markup=kb_number_room)
     await ApartmentState.next()
 
 
@@ -257,7 +281,7 @@ async def select_district(message: types.Message, state=FSMContext):
     counter_room = message.text
 
     await state.update_data(var_counter_room=counter_room)
-    await message.answer(f"Укажите этаж")
+    await message.answer(f"Укажите этаж", reply_markup=kb_number_floor)
     await ApartmentState.next()
 
 
@@ -267,7 +291,7 @@ async def select_district(message: types.Message, state=FSMContext):
     floor = message.text
 
     await state.update_data(var_floor=floor)
-    await message.answer(f"Укажите этажность")
+    await message.answer(f"Укажите этажность", reply_markup=kb_number_floor)
     await ApartmentState.next()
 
 
@@ -287,7 +311,7 @@ async def select_district(message: types.Message, state=FSMContext):
     type_dress = message.text
 
     await state.update_data(var_type_dress=type_dress)
-    await message.answer(f"Укажите высоту потолков")
+    await message.answer(f"Укажите высоту потолков", reply_markup=kb_ceiling_height)
     await ApartmentState.next()
 
 
@@ -307,7 +331,7 @@ async def select_district(message: types.Message, state=FSMContext):
     repair = message.text
 
     await state.update_data(var_repair=repair)
-    await message.answer(f"Укажите общую площадь квартиры (м2)")
+    await message.answer(f"Укажите общую площадь квартиры (м2)", reply_markup=ReplyKeyboardRemove())
     await ApartmentState.next()
 
 
@@ -317,7 +341,7 @@ async def select_district(message: types.Message, state=FSMContext):
     apartment_area = message.text
 
     await state.update_data(var_apartment_area=apartment_area)
-    await message.answer(f"Укажите площадь кухни (м2)")
+    await message.answer(f"Укажите площадь кухни (м2)", reply_markup=ReplyKeyboardRemove())
     await ApartmentState.next()
 
 
@@ -387,7 +411,8 @@ async def select_district(message: types.Message, state=FSMContext):
     owner = message.text
 
     await state.update_data(var_owner=owner)
-    await message.answer(f"Введите контактный номер телефона собственника. \nПример ввода  987777777")
+    await message.answer(f"Введите контактный номер телефона собственника. \nПример ввода  987777777",
+                         reply_markup=ReplyKeyboardRemove())
     await ApartmentState.next()
 
 
@@ -397,7 +422,8 @@ async def select_district(message: types.Message, state=FSMContext):
     number_phone = message.text
 
     await state.update_data(var_number_phone=number_phone)
-    await message.answer(f"Если имеется дополнительный номер телефона, введите его")
+    await message.answer(f"Если имеется дополнительный номер телефона, введите его",
+                         reply_markup=ReplyKeyboardRemove())
     await ApartmentState.next()
 
 
@@ -427,7 +453,7 @@ async def select_district(message: types.Message, state=FSMContext):
     price = message.text
 
     await state.update_data(var_price=price)
-    await message.answer(f"Стартовая\nС процентами\nЦена на руки")
+    await message.answer(f"Стартовая\nС процентами\nЦена на руки", reply_markup=ReplyKeyboardRemove())
     await ApartmentState.next()
 
 
@@ -437,7 +463,7 @@ async def select_district(message: types.Message, state=FSMContext):
     full_price = message.text
 
     await state.update_data(var_full_price=full_price)
-    await message.answer(f"Укажите количество прописанных человек")
+    await message.answer(f"Укажите количество прописанных человек", reply_markup=ReplyKeyboardRemove())
     await ApartmentState.next()
 
 
@@ -447,7 +473,8 @@ async def select_district(message: types.Message, state=FSMContext):
     scribed_people = message.text
 
     await state.update_data(var_scribed_people=scribed_people)
-    await message.answer(f"Выберите время которое прошло с последнего оформления", reply_markup=kb_registration_date)
+    await message.answer(f"Выберите время которое прошло с последнего оформления",
+                         reply_markup=kb_registration_date)
     await ApartmentState.next()
 
 
@@ -538,18 +565,18 @@ async def select_district(message: types.Message, state=FSMContext):
         list_answer.append(answer['var_owner'])
         list_answer.append(answer['var_number_phone'])
         list_answer.append(answer['var_additional_number_phone'])
-        list_answer.append(' ')
+        list_answer.append('')
         list_answer.append(answer['var_location_the_road'])
         list_answer.append(answer['var_distance_to_metro'])
         list_answer.append(answer['var_number_apartment'])
         list_answer.append(answer['var_number_home'])
-        list_answer.append(' ')
-        list_answer.append(' ')
+        list_answer.append('')
+        list_answer.append('')
         list_answer.append(user_name)
         list_answer.append(dt_time)
         list_answer.append(dt_time)
         list_answer.append(answer['var_informant'])
-        list_answer.append(' ')
+        list_answer.append('')
         list_answer.append(answer['var_district'])
         list_answer.append(answer['var_infrastructure'])
         list_answer.append(answer['var_redevelopment'])

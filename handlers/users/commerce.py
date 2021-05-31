@@ -1,3 +1,4 @@
+import os
 from datetime import date
 
 import googleapiclient.discovery
@@ -20,7 +21,7 @@ load_dotenv()
 
 
 def google_sendler(sheet_id, start_col, end_col, array_data):
-    CREDENTAILS_FILE = "C:/Users/User/Desktop/udemy_course-master/creds.json"
+    CREDENTAILS_FILE = os.getenv('credentails_file')
     credentials = ServiceAccountCredentials.from_json_keyfile_name(
         CREDENTAILS_FILE,
         ['https://www.googleapis.com/auth/spreadsheets',

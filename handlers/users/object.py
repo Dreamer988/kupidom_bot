@@ -3,15 +3,14 @@ from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
 from aiogram.types import ReplyKeyboardRemove
 
-from keyboards.default.apartment import kb_type_of_property
-from keyboards.default.delete_object import kb_type_of_property
+from keyboards.default.apartment import kb_type_of_property, kb_type_of_service
 from loader import dp
 from states import MenuState, ObjectState
 
 
 @dp.message_handler(Text(equals='Добавить'), state=MenuState.Object)
 async def get_menu(message: types.Message):
-    await message.answer(f"Выбери вид услуги")
+    await message.answer("Выберите вид услуги", reply_markup=kb_type_of_service)
     await ObjectState.Add.set()
 
 

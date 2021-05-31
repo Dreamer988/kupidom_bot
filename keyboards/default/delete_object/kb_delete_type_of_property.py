@@ -1,5 +1,5 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
-kb_type_of_property = ReplyKeyboardMarkup(
+kb_delete_type_of_property = ReplyKeyboardMarkup(
     keyboard=[
         [
             KeyboardButton(text="Квартиры"),

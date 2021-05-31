@@ -1,5 +1,4 @@
 from datetime import date
-from pprint import pprint
 
 import googleapiclient.discovery
 import httplib2
@@ -660,7 +659,7 @@ async def select_district(message: types.Message, state=FSMContext):
         list_answer.append(dt_time)  # AO --> Дата обзвона
         list_answer.append(answer['var_informant'])  # AP --> Информатор
         list_answer.append('')  # AQ --> Ссылка domkupi
-        list_answer.append(answer['var_infrastructure'])  # AR --> Инфраструктура
+        list_answer.append(answer['var_infrastructures'])  # AR --> Инфраструктура
         list_answer.append(answer['var_distance_to_metro'])  # AS --> Метро
         list_answer.append(answer['var_system_heating'])  # AT --> Отопление
         list_answer.append(answer['var_sewerage'])  # AU --> ХВС

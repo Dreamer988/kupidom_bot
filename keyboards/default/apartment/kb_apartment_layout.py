@@ -26,6 +26,9 @@ kb_apartment_layout = ReplyKeyboardMarkup(
             KeyboardButton(text='Смежно - раздельная'),
             KeyboardButton(text='Студия')
         ],
+        [
+            KeyboardButton(text='Назад ⬅️')
+        ]
     ],
     resize_keyboard=True,
     one_time_keyboard=True,

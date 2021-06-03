@@ -5,6 +5,9 @@ kb_freestanding = ReplyKeyboardMarkup(
         [
             KeyboardButton(text='Отдельно стоящее'),
             KeyboardButton(text='Не отдельно стоящее')
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

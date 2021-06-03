@@ -5,6 +5,9 @@ kb_registration_date = ReplyKeyboardMarkup(
         [
             KeyboardButton(text='Более 3-х лет'),
             KeyboardButton(text='Менее 3-х лет')
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

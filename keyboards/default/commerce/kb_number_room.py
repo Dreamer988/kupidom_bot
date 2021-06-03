@@ -19,6 +19,9 @@ kb_number_room = ReplyKeyboardMarkup(
         ],
         [
             KeyboardButton(text="0")
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

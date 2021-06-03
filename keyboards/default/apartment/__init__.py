@@ -24,3 +24,4 @@ from .kb_yes_or_no import kb_yes_or_no
 from .kb_number_room import kb_number_room
 from .kb_number_floor import kb_number_floor
 from .kb_ceiling_height import kb_ceiling_height
+from .kb_back import kb_back

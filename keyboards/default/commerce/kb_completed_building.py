@@ -5,6 +5,9 @@ kb_completed_building = ReplyKeyboardMarkup(
         [
             KeyboardButton(text='Завершено'),
             KeyboardButton(text='Не завершено')
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

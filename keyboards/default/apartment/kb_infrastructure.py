@@ -20,6 +20,9 @@ kb_infrastructure = ReplyKeyboardMarkup(
         ],
         [
             KeyboardButton(text='Готово ✅')
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

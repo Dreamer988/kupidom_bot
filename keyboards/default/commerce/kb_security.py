@@ -13,6 +13,9 @@ kb_security = ReplyKeyboardMarkup(
         [
             KeyboardButton(text='Высокий забор с собакой'),
             KeyboardButton(text='Круглосуточная охрана')
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

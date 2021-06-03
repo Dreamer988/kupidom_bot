@@ -8,6 +8,9 @@ kb_system_gas = ReplyKeyboardMarkup(
         ],
         [
             KeyboardButton(text='Нет, но есть возможность подключить'),
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

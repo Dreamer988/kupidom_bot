@@ -13,6 +13,9 @@ kb_type_of_building = ReplyKeyboardMarkup(
         [
             KeyboardButton(text='Блочный'),
             KeyboardButton(text='Керамзит'),
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

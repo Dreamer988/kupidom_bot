@@ -5,6 +5,9 @@ kb_type_of_service = ReplyKeyboardMarkup(
         [
             KeyboardButton(text='Продажа'),
             KeyboardButton(text='Аренда')
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

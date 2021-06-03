@@ -41,6 +41,9 @@ kb_type_of_layout = ReplyKeyboardMarkup(
         [
             KeyboardButton(text="Японская"),
         ],
+        [
+            KeyboardButton(text='Назад ⬅️')
+        ]
     ],
     resize_keyboard=True,
     one_time_keyboard=True,

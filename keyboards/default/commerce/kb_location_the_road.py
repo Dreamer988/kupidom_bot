@@ -12,6 +12,9 @@ kb_location_the_road = ReplyKeyboardMarkup(
         [
             KeyboardButton(text='Махалля'),
             KeyboardButton(text='Тупик')
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

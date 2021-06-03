@@ -5,6 +5,9 @@ kb_yes_or_no = ReplyKeyboardMarkup(
         [
             KeyboardButton(text='Да'),
             KeyboardButton(text='Нет')
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

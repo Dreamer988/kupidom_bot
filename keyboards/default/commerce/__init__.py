@@ -26,3 +26,4 @@ from .kb_type_parking import kb_type_parking
 from .kb_yes_or_no import kb_yes_or_no
 from .kb_number_floor import kb_number_floor
 from .kb_number_room import kb_number_room
+from .kb_back import kb_back

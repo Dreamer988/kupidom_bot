@@ -10,6 +10,9 @@ kb_number_of_buildings = ReplyKeyboardMarkup(
         ],
         [
             KeyboardButton(text='5 и более')
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     one_time_keyboard=True,

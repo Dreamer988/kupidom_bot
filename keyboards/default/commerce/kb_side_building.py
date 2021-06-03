@@ -17,6 +17,9 @@ kb_side_building = ReplyKeyboardMarkup(
         [
             KeyboardButton(text='Отдельно стоящее'),
             KeyboardButton(text='Пристройка'),
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

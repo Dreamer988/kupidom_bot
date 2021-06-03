@@ -12,6 +12,9 @@ kb_type_parking = ReplyKeyboardMarkup(
         ],
         [
             KeyboardButton(text='Нет')
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

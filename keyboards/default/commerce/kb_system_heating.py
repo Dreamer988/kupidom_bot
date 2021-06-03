@@ -8,6 +8,9 @@ kb_system_heating = ReplyKeyboardMarkup(
         ],
         [
             KeyboardButton(text='Нету'),
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

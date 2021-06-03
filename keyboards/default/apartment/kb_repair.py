@@ -28,6 +28,9 @@ kb_repair = ReplyKeyboardMarkup(
         ],
         [
             KeyboardButton(text='Чистая аккуратная')
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

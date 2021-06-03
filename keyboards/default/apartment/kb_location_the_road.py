@@ -15,6 +15,9 @@ kb_location_the_road = ReplyKeyboardMarkup(
         ],
         [
             KeyboardButton(text='Внутри района (квартала)')
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

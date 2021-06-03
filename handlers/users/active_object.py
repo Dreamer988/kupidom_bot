@@ -17,7 +17,7 @@ load_dotenv()
 
 
 def google_sendler(sheet_id, start_col, end_col, array_data):
-    CREDENTAILS_FILE = os.getenv('credentails_file')
+    CREDENTAILS_FILE = os.getenv('CREDENTAILS_FILE')
     credentials = ServiceAccountCredentials.from_json_keyfile_name(
         CREDENTAILS_FILE,
         ['https://www.googleapis.com/auth/spreadsheets',
@@ -80,11 +80,11 @@ async def select_district(message: types.Message, state=FSMContext):
         list_answer = []
         list_answer.append(answer['var_id_object'])
         list_answer.append(user_name)
-        google_sendler('1D41UHIXRICwbW6X_ZCMr0fW5ETB75RGars2Ci7AQFUg', 'Активация!A', 'C', list_answer)
+        await state.reset_state()
         await message.answer('Объект отправлен на активацию)', reply_markup=kb_main_menu)
-        await state.reset_state()
+        google_sendler('1D41UHIXRICwbW6X_ZCMr0fW5ETB75RGars2Ci7AQFUg', 'Активация!A', 'C', list_answer)
     elif filled_in_correctly.lower() == 'нет':
-        await message.answer('Вы отменили отправку', reply_markup=kb_main_menu)
         await state.reset_state()
+        await message.answer('Вы отменили отправку', reply_markup=kb_main_menu)
     else:
         await message.answer('Отправлено не верное значение( Попробуйте снова')

@@ -7,6 +7,9 @@ kb_business = ReplyKeyboardMarkup(
         ],
         [
             KeyboardButton(text='Рабочий бизнес с фирмой')
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

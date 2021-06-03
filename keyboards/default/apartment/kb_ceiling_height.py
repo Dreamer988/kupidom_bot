@@ -16,6 +16,9 @@ kb_ceiling_height = ReplyKeyboardMarkup(
             KeyboardButton(text="340"),
             KeyboardButton(text="360"),
             KeyboardButton(text="380")
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

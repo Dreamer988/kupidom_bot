@@ -28,6 +28,9 @@ kb_number_floor = ReplyKeyboardMarkup(
         ],
         [
             KeyboardButton(text="0")
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

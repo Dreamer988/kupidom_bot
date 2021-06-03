@@ -5,6 +5,9 @@ kb_side_building = ReplyKeyboardMarkup(
         [
             KeyboardButton(text='Торец'),
             KeyboardButton(text='Не торец')
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

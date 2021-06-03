@@ -9,6 +9,9 @@ kb_roof_condition = ReplyKeyboardMarkup(
         [
             KeyboardButton(text='Течёт'),
             KeyboardButton(text='Не последний этаж')
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

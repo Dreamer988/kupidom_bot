@@ -12,6 +12,9 @@ kb_power_supply = ReplyKeyboardMarkup(
         ],
         [
             KeyboardButton(text='Нет, но есть возможеность подключить')
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

@@ -8,6 +8,9 @@ kb_redevelopment = ReplyKeyboardMarkup(
         ],
         [
             KeyboardButton(text='Кухня на балконе')
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

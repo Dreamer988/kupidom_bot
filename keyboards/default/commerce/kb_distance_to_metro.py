@@ -12,6 +12,9 @@ kb_distance_to_metro = ReplyKeyboardMarkup(
         ],
         [
             KeyboardButton(text='Более 2000 (м)')
+        ],
+        [
+            KeyboardButton(text='Нету')
         ]
     ],
     resize_keyboard=True,

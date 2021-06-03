@@ -8,6 +8,9 @@ kb_air_conditioning = ReplyKeyboardMarkup(
         ],
         [
             KeyboardButton(text='2 и более')
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

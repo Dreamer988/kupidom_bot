@@ -13,6 +13,9 @@ kb_elevator_condition = ReplyKeyboardMarkup(
         [
             KeyboardButton(text='Нет'),
         ],
+        [
+            KeyboardButton(text='Назад ⬅️')
+        ]
     ],
     resize_keyboard=True,
     one_time_keyboard=True,

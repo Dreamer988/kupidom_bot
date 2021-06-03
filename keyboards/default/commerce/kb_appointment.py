@@ -32,6 +32,9 @@ kb_appointment = ReplyKeyboardMarkup(
         ],
         [
             KeyboardButton(text='Готово ✅')
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

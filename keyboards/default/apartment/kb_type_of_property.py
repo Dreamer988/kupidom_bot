@@ -7,6 +7,9 @@ kb_type_of_property = ReplyKeyboardMarkup(
         ],
         [
             KeyboardButton(text="Коммерция")
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

@@ -37,6 +37,9 @@ kb_balcony_size = ReplyKeyboardMarkup(
         ],
         [
             KeyboardButton(text='Нет')
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

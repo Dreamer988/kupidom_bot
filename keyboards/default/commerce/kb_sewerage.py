@@ -16,6 +16,9 @@ kb_sewerage = ReplyKeyboardMarkup(
         ],
         [
             KeyboardButton(text='Есть возможность подключить')
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

@@ -2,6 +2,7 @@ from aiogram import types
 from loader import dp
 
 
-@dp.message_handler()
+@dp.message_handler(commands='back', state='*')
 async def bot_echo(message: types.Message):
-    await message.answer(f"Просим извинения, но \nФункция {message.text} еще не добавлена в бот :(")
+    state = dp.current_state(chat=message.chat.id, user=message.from_user.id)
+    await message.answer(f'Состояние:{state}')

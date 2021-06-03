@@ -5,6 +5,9 @@ kb_tenants = ReplyKeyboardMarkup(
         [
             KeyboardButton(text='Есть'),
             KeyboardButton(text='Нету')
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

@@ -38,6 +38,9 @@ kb_district = ReplyKeyboardMarkup(
         [
             KeyboardButton(text='Ташкентская область')
         ],
+        [
+            KeyboardButton(text='Назад ⬅️')
+        ]
     ],
     resize_keyboard=True,
     one_time_keyboard=True

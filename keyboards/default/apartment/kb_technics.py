@@ -8,6 +8,9 @@ kb_technics = ReplyKeyboardMarkup(
         ],
         [
             KeyboardButton(text='Частично')
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

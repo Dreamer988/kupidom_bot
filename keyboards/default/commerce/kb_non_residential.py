@@ -8,6 +8,9 @@ kb_non_residential = ReplyKeyboardMarkup(
         ],
         [
             KeyboardButton(text='Переведут после задатка'),
+        ],
+        [
+            KeyboardButton(text='Назад ⬅️')
         ]
     ],
     resize_keyboard=True,

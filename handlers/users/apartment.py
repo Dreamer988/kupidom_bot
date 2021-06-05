@@ -428,7 +428,7 @@ async def select_district(message: types.Message, state=FSMContext):
         repair = message.text
 
         await state.update_data(var_repair=repair)
-        await message.answer(f"Укажите общую площадь квартиры (м2)", reply_markup=1())
+        await message.answer(f"Укажите общую площадь квартиры (м2)", reply_markup=ReplyKeyboardRemove())
         await ApartmentState.next()
 
 
@@ -748,11 +748,12 @@ async def select_district(message: types.Message, state=FSMContext):
         list_answer.append(answer['var_number_apartment'])
         list_answer.append('')
         list_answer.append('')
+        list_answer.append('')
+        list_answer.append('')
         list_answer.append(user_name)
         list_answer.append(dt_time)
         list_answer.append(dt_time)
         list_answer.append(answer['var_informant'])
-        list_answer.append('')
         list_answer.append(answer['var_district'])
         list_answer.append(answer['var_infrastructures'])
         list_answer.append(answer['var_redevelopment'])
@@ -767,7 +768,7 @@ async def select_district(message: types.Message, state=FSMContext):
         list_answer.append(answer['var_public'])
         await state.reset_state()
         await message.answer('Ваша объективка отправлена)', reply_markup=kb_main_menu)
-        google_sendler('1-B80joNKTOSTIJRLiACOcfH1E3dH5yrNPbS-CU5Bvxc', 'Продажа квартиры!A', 'AX', list_answer)
+        google_sendler('1-B80joNKTOSTIJRLiACOcfH1E3dH5yrNPbS-CU5Bvxc', 'Продажа квартиры!A', 'AY', list_answer)
     elif filled_in_correctly.lower() == 'нет':
         await state.reset_state()
         await message.answer('Вы отменили отправку', reply_markup=kb_main_menu)

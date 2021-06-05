@@ -1,6 +1,7 @@
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
+from aiogram.types import ReplyKeyboardRemove
 
 from keyboards.default.apartment import kb_object_menu
 from keyboards.default.by_sell import kb_menu_by_sell
@@ -27,7 +28,7 @@ async def search(message: types.Message, state=FSMContext):
     await MenuState.Search.set()
 
 
-@dp.message_handler(Text(equals='Объект'), state=None)
+@dp.message_handler(Text(equals='Маклер'), state=None)
 async def get_menu(message: types.Message):
-    # await message.answer(f"Виберите одно из действий", reply_markup=kb_object_menu)
+    await message.answer(f"Введите номер телефона маклера", reply_markup=ReplyKeyboardRemove())
     await MenuState.Broker.set()

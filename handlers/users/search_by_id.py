@@ -134,7 +134,7 @@ def search_by_id_apartment(id_object, user_id, user_name):
                          f'Ориентиры:  {object[2]}\n' \
                          f'Улица:  {object[3]}\n' \
                          f'Номер дома:  {object[29]}\n' \
-                         f'Номер квартиры:  {object[28]}\n' \
+                         f'Номер квартиры:  {object[30]}\n' \
                          f'Кол-во комнат:  {object[4]}\n' \
                          f'Этаж:  {object[5]}\n' \
                          f'Этаж-сть:  {object[6]}\n' \
@@ -153,8 +153,8 @@ def search_by_id_apartment(id_object, user_id, user_name):
                          f'Имя собственника:  {object[23]}\n' \
                          f'Номер телефона:  {object[24]}\n' \
                          f'Доп.номер телефона:  {object[25]}\n' \
-                         f'Вариант:  {object[33]}\n' \
-                         f'Ссылка на сайт:  {object[37]}\n'
+                         f'Вариант:  {object[35]}\n' \
+                         f'Ссылка на сайт:  {object[51]}\n'
 
                 add_request = service.spreadsheets().values().batchUpdate(
                     spreadsheetId=spreadsheet_id,

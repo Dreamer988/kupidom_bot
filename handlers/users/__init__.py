@@ -13,6 +13,8 @@ from .search_by_id import dp
 from .object import dp
 from .commerce import dp
 from .apartment import dp
+from .rent_apartment import dp
+# from .rent_commerce import dp
 from .delete_object import dp
 from .edit_object import dp
 from .active_object import dp

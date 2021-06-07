@@ -838,10 +838,10 @@ async def select_district(message: types.Message, state=FSMContext):
         list_answer.append(answer['var_land_area'])  # O --> Площадь земли
         list_answer.append(answer['var_non_residential'])  # P --> Переведено в нежилое
         list_answer.append(answer['var_ceiling_height'])  # Q --> Высота потолков
-        list_answer.append('')  # R --> Описание
+        list_answer.append(answer['var_description'])  # R --> Описание
         list_answer.append(answer['var_traffic_level'])  # S --> Проходимость
         list_answer.append(answer['var_add_territory'])  # T --> Доп.территория
-        list_answer.append('')  # U --> Описание территории
+        list_answer.append(answer['var_add_territory'])  # U --> Описание территории
         list_answer.append(answer['var_completed_building'])  # V --> Завершено строительство
         list_answer.append(answer['var_type_parking'])  # W --> Парковка
         list_answer.append(answer['var_price'])  # X --> Стартовая цена
@@ -850,35 +850,36 @@ async def select_district(message: types.Message, state=FSMContext):
         list_answer.append(answer['var_number_phone'])  # AA --> Номер телефона
         list_answer.append(answer['var_additional_number_phone'])  # AB --> Доп.номер
         list_answer.append('')  # AC --> Зарубежный номер
-        list_answer.append(answer['var_location_the_road'])  # AD --> Расположение от дороги
+        list_answer.append(answer['var_location_the_road'])  # AD --> Расположение от дороги61
         list_answer.append(answer['var_side_building'])  # AE --> Расположение в здании
         list_answer.append(answer['var_number_home'])  # AF --> Номер дома
         list_answer.append(answer['var_number_apartment'])  # AG --> Номер квартиры
         list_answer.append(answer['var_business'])  # AH --> Бизнес
-        list_answer.append(answer['var_public'])  # AI --> Торг.точка
+        list_answer.append(answer['var_freestanding'])  # AI --> Здание
         list_answer.append(answer['var_tenants'])  # AG --> Арендаторы
         list_answer.append('')  # AK --> Заголовок
-        list_answer.append(answer['var_description'])  # AL --> Описание
-        list_answer.append(user_name)  # AM --> Имя агента
-        list_answer.append(dt_time)  # AN --> Дата создания
-        list_answer.append(dt_time)  # AO --> Дата обзвона
-        list_answer.append(answer['var_informant'])  # AP --> Информатор
-        list_answer.append('')  # AQ --> Ссылка domkupi
-        list_answer.append(answer['var_infrastructures'])  # AR --> Инфраструктура
-        list_answer.append(answer['var_distance_to_metro'])  # AS --> Метро
-        list_answer.append(answer['var_system_heating'])  # AT --> Отопление
-        list_answer.append(answer['var_sewerage'])  # AU --> ХВС
-        list_answer.append(answer['var_power_supply'])  # AV --> Электрика
-        list_answer.append(answer['var_system_gas'])  # AW --> Газ
-        list_answer.append(answer['var_furniture'])  # AX --> Мебель
-        list_answer.append(answer['var_technics'])  # AY --> Техника
-        list_answer.append(answer['var_add_technics'])  # AZ --> Доп.оборудование
-        list_answer.append(answer['var_security'])  # BA --> Безопасность
-        list_answer.append(answer['var_exclusive'])  # BB --> Эксклюзив
-        list_answer.append(answer['var_public'])  # BC --> Рекламировать
+        list_answer.append('')  # AL --> Описание
+        list_answer.append('')  # AM --> Заголовок UZB
+        list_answer.append('')  # AN --> Описание UZB
+        list_answer.append(user_name)  # AO --> Имя агента
+        list_answer.append(dt_time)  # AP --> Дата создания
+        list_answer.append(dt_time)  # AQ --> Дата обзвона
+        list_answer.append(answer['var_informant'])  # AR --> Информатор
+        list_answer.append(answer['var_infrastructures'])  # AS --> Инфраструктура
+        list_answer.append(answer['var_distance_to_metro'])  # AT --> Метро
+        list_answer.append(answer['var_system_heating'])  # AU --> Отопление
+        list_answer.append(answer['var_sewerage'])  # AV --> ХВС
+        list_answer.append(answer['var_power_supply'])  # AW --> Электрика
+        list_answer.append(answer['var_system_gas'])  # AX --> Газ
+        list_answer.append(answer['var_furniture'])  # AY --> Мебель
+        list_answer.append(answer['var_technics'])  # AZ --> Техника
+        list_answer.append(answer['var_add_technics'])  # BA --> Доп.оборудование
+        list_answer.append(answer['var_security'])  # BB --> Безопасность
+        list_answer.append(answer['var_exclusive'])  # BC --> Эксклюзив
+        list_answer.append(answer['var_public'])  # BD --> Рекламировать
         await state.reset_state()
         await message.answer('Ваша объективка отправлена)', reply_markup=kb_main_menu)
-        google_sendler('1-B80joNKTOSTIJRLiACOcfH1E3dH5yrNPbS-CU5Bvxc', 'Продажа коммерции!A', 'BC', list_answer)
+        google_sendler('1-B80joNKTOSTIJRLiACOcfH1E3dH5yrNPbS-CU5Bvxc', 'Продажа коммерции!A', 'BD', list_answer)
     elif filled_in_correctly.lower() == 'нет':
         await state.reset_state()
         await message.answer('Вы отменили отправку', reply_markup=kb_main_menu)

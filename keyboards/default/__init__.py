@@ -5,3 +5,5 @@ from . import house
 from . import system
 from . import search
 from . import by_sell
+from . import rent_apartment
+from . import rent_commerce

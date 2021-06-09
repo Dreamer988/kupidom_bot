@@ -5,7 +5,6 @@ import googleapiclient.discovery
 import httplib2
 from aiogram import types
 from aiogram.dispatcher import FSMContext
-from aiogram.types import ReplyKeyboardRemove
 from dotenv import load_dotenv
 from oauth2client.service_account import ServiceAccountCredentials
 
@@ -764,11 +763,11 @@ async def select_district(message: types.Message, state=FSMContext):
         informant = message.text
 
         await state.update_data(var_informant=informant)
-        await message.answer(f"Бизнес фирмы", reply_markup=kb_business)
+        await message.answer(f"Бизнес", reply_markup=kb_business)
         await CommerceState.next()
 
 
-# Состояние CommerceState.Q46  -->  Бизнес фирмы
+# Состояние CommerceState.Q46  -->  Бизнес
 @dp.message_handler(state=CommerceState.Q46)
 async def select_district(message: types.Message, state=FSMContext):
     if message.text == 'Назад ⬅️':
@@ -787,7 +786,7 @@ async def select_district(message: types.Message, state=FSMContext):
 async def select_district(message: types.Message, state=FSMContext):
     if message.text == 'Назад ⬅️':
         await CommerceState.Q46.set()
-        await message.answer(f"Бизнес фирмы", reply_markup=kb_business)
+        await message.answer(f"Бизнес", reply_markup=kb_business)
     else:
         description = message.text
 
@@ -834,14 +833,14 @@ async def select_district(message: types.Message, state=FSMContext):
         list_answer.append(answer['var_type_of_building'])  # K --> Тип строения
         list_answer.append(answer['var_type_of_service'])  # L --> Тип недвижимости
         list_answer.append(answer['var_appointment'])  # M --> Назначение
-        list_answer.append(answer['var_desc_territory'])  # N --> Кол-во строений
+        list_answer.append(answer['number_of_buildings'])  # N --> Кол-во строений
         list_answer.append(answer['var_land_area'])  # O --> Площадь земли
         list_answer.append(answer['var_non_residential'])  # P --> Переведено в нежилое
         list_answer.append(answer['var_ceiling_height'])  # Q --> Высота потолков
         list_answer.append(answer['var_description'])  # R --> Описание
         list_answer.append(answer['var_traffic_level'])  # S --> Проходимость
         list_answer.append(answer['var_add_territory'])  # T --> Доп.территория
-        list_answer.append(answer['var_add_territory'])  # U --> Описание территории
+        list_answer.append(answer['var_desc_territory'])  # U --> Описание территории
         list_answer.append(answer['var_completed_building'])  # V --> Завершено строительство
         list_answer.append(answer['var_type_parking'])  # W --> Парковка
         list_answer.append(answer['var_price'])  # X --> Стартовая цена

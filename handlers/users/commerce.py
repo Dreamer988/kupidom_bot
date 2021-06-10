@@ -833,7 +833,7 @@ async def select_district(message: types.Message, state=FSMContext):
         list_answer.append(answer['var_type_of_building'])  # K --> Тип строения
         list_answer.append(answer['var_type_of_service'])  # L --> Тип недвижимости
         list_answer.append(answer['var_appointment'])  # M --> Назначение
-        list_answer.append(answer['number_of_buildings'])  # N --> Кол-во строений
+        list_answer.append(answer['var_number_of_buildings'])  # N --> Кол-во строений
         list_answer.append(answer['var_land_area'])  # O --> Площадь земли
         list_answer.append(answer['var_non_residential'])  # P --> Переведено в нежилое
         list_answer.append(answer['var_ceiling_height'])  # Q --> Высота потолков

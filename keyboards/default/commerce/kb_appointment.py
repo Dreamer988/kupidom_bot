@@ -20,7 +20,7 @@ kb_appointment = ReplyKeyboardMarkup(
         ],
         [
             KeyboardButton(text='Гостиница'),
-            KeyboardButton(text='Коплекс'),
+            KeyboardButton(text='Комплекс'),
             KeyboardButton(text='База отдыха')
         ],
         [

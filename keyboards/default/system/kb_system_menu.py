@@ -2,8 +2,8 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 kb_system_menu = ReplyKeyboardMarkup(
     keyboard=[
         [
-            KeyboardButton(text="Очистить чат с сотстоянием"),
-            KeyboardButton(text="Диалог")
+            KeyboardButton(text="Пользователи"),
+            KeyboardButton(text="OLX")
         ]
     ],
     resize_keyboard=True,

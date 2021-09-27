@@ -3,11 +3,19 @@ from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
 from aiogram.types import ReplyKeyboardRemove
 
-from keyboards.default.apartment import kb_object_menu
+from filters.user_access import UserAccess
+from keyboards.default.send_by_apartment import kb_object_menu, kb_main_menu
 from keyboards.default.by_sell import kb_menu_by_sell
 from keyboards.default.search import kb_search_menu
 from loader import dp
 from states import MenuState
+
+
+@dp.message_handler(UserAccess(), commands=['menu'], state='*')
+async def bot_start(message: types.Message, state=FSMContext):
+    await message.answer('Главное меню в вашем распоряжении',
+                         reply_markup=kb_main_menu)
+    await state.reset_state()
 
 
 @dp.message_handler(Text(equals='Объект'), state=None)

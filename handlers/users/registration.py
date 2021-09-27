@@ -1,61 +1,16 @@
-import os
 from datetime import date
 
-import googleapiclient
-import httplib2
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.types import ReplyKeyboardRemove
-from googleapiclient import discovery
-from oauth2client.service_account import ServiceAccountCredentials
 
 from filters.is_phone import IsPhone
-from keyboards.default.apartment import kb_back, kb_yes_or_no, kb_main_menu
-from keyboards.default.by_sell import kb_type_transaction, kb_contract, kb_reference
+from google_work.google_work import GoogleWork
+from keyboards.default.send_by_apartment import kb_yes_or_no, kb_main_menu
+from keyboards.default.by_sell import kb_type_transaction_back, kb_contract_back, kb_reference_back
+from keyboards.default.step_back import kb_back
 from loader import dp
 from states import BySell
-
-
-def google_sendler(sheet_id, start_col, end_col, array_data):
-    CREDENTAILS_FILE = os.getenv('CREDENTAILS_FILE')
-    credentials = ServiceAccountCredentials.from_json_keyfile_name(
-        CREDENTAILS_FILE,
-        ['https://www.googleapis.com/auth/spreadsheets',
-         'https://www.googleapis.com/auth/drive'])
-    httpAuth = credentials.authorize(httplib2.Http())
-    service = googleapiclient.discovery.build('sheets', 'v4', http=httpAuth)
-    spreadsheet_id = sheet_id
-
-    values = service.spreadsheets().values().get(
-        spreadsheetId=spreadsheet_id,
-        range=f"{start_col}:{end_col}",
-        majorDimension="COLUMNS"
-    ).execute()
-    start_range = len(values['values'][0]) + 1
-    sheet_range = f"{start_col}{start_range}:{end_col}{start_range}"
-
-    values = service.spreadsheets().values().append(
-        spreadsheetId=spreadsheet_id,
-        range=f"{start_col}{start_range}",
-        valueInputOption="USER_ENTERED",
-        body={
-            "values": [['']]
-        }
-    ).execute()
-
-    values = service.spreadsheets().values().batchUpdate(
-        spreadsheetId=spreadsheet_id,
-        body={
-            "valueInputOption": "USER_ENTERED",
-            "data": [
-                {
-                    "range": sheet_range,
-                    "majorDimension": "ROWS",
-                    "values": [array_data]
-                }
-            ]
-        }
-    ).execute()
 
 
 @dp.message_handler(state=BySell.Registration_Q1)
@@ -70,7 +25,7 @@ async def set_registration(message: types.Message, state=FSMContext):
 async def set_registration(message: types.Message, state=FSMContext):
     if message.text == 'Назад ⬅️':
         await BySell.Registration_Q1.set()
-        await message.answer('Выберите вид сделки', reply_markup=kb_type_transaction)
+        await message.answer('Выберите вид сделки', reply_markup=kb_type_transaction_back)
     else:
         id = message.text
         await state.update_data(var_id=id)
@@ -242,7 +197,7 @@ async def set_registration(message: types.Message, state=FSMContext):
     else:
         informant_reward = message.text
         await state.update_data(var_informant_reward=informant_reward)
-        await message.answer('Подписали Договор / ИКУ ?', reply_markup=kb_contract)
+        await message.answer('Подписали Договор / ИКУ ?', reply_markup=kb_contract_back)
         await BySell.Registration_Q17.set()
 
 
@@ -254,7 +209,7 @@ async def set_registration(message: types.Message, state=FSMContext):
     else:
         contract = message.text
         await state.update_data(var_contract=contract)
-        await message.answer('Отправили справки или акт сверки ?', reply_markup=kb_reference)
+        await message.answer('Отправили справки или акт сверки ?', reply_markup=kb_reference_back)
         await BySell.Registration_Q18.set()
 
 
@@ -262,7 +217,7 @@ async def set_registration(message: types.Message, state=FSMContext):
 async def set_registration(message: types.Message, state=FSMContext):
     if message.text == 'Назад ⬅️':
         await BySell.Registration_Q17.set()
-        await message.answer('Подписали Договор / ИКУ ?', reply_markup=kb_contract)
+        await message.answer('Подписали Договор / ИКУ ?', reply_markup=kb_contract_back)
     else:
         reference = message.text
         await state.update_data(var_reference=reference)
@@ -274,7 +229,7 @@ async def set_registration(message: types.Message, state=FSMContext):
 async def set_registration(message: types.Message, state=FSMContext):
     if message.text == 'Назад ⬅️':
         await BySell.Registration_Q18.set()
-        await message.answer('Отправили справки или акт сверки ?', reply_markup=kb_reference)
+        await message.answer('Отправили справки или акт сверки ?', reply_markup=kb_reference_back)
     else:
         video_review = message.text
         await state.update_data(var_video_review=video_review)
@@ -285,37 +240,36 @@ async def set_registration(message: types.Message, state=FSMContext):
 @dp.message_handler(state=BySell.Registration_Q20)
 async def select_district(message: types.Message, state=FSMContext):
     filled_in_correctly = message.text
-    answer = await state.get_data()
-    user_name = message.from_user.full_name
 
     if filled_in_correctly.lower() == 'да':
-        dt_time = str(date.today())
         answer = await state.get_data()
-        list_answer = []
-        list_answer.append(dt_time)
-        list_answer.append(answer['var_type_transaction'])
-        list_answer.append(user_name)
-        list_answer.append(answer['var_address'])
-        list_answer.append(answer['var_id'])
-        list_answer.append(answer['var_commission'])
-        list_answer.append(answer['var_total_cost'])
-        list_answer.append(answer['var_buyer_name'])
-        list_answer.append(answer['var_buyer_phone'])
-        list_answer.append(answer['var_seller_name'])
-        list_answer.append(answer['var_seller_phone'])
-        list_answer.append(answer['var_date_registration'])
-        list_answer.append(answer['var_agent_name_take_object'])
-        list_answer.append(answer['var_agent_name_sell_object'])
-        list_answer.append(answer['var_agent_name_reg_object'])
-        list_answer.append(answer['var_informant'])
-        list_answer.append(answer['var_informant_phone'])
-        list_answer.append(answer['var_informant_reward'])
-        list_answer.append(answer['var_contract'])
-        list_answer.append(answer['var_reference'])
-        list_answer.append(answer['var_video_review'])
         await state.reset_state()
         await message.answer('Оформление отправлено', reply_markup=kb_main_menu)
-        google_sendler('1cybTRAnHDJ1gRiX5aY9XkD_84LXbMKccQPmjZn4YcCs', 'Оформление!A', 'U', list_answer)
+        GoogleWork().google_add_row(sheet_id='1cybTRAnHDJ1gRiX5aY9XkD_84LXbMKccQPmjZn4YcCs',
+                                    name_list='Оформление',
+                                    array_data=[
+                                        str(date.today()),
+                                        ['var_type_transaction'],
+                                        message.from_user.full_name,
+                                        ['var_address'],
+                                        ['var_id'],
+                                        ['var_commission'],
+                                        ['var_total_cost'],
+                                        ['var_buyer_name'],
+                                        ['var_buyer_phone'],
+                                        ['var_seller_name'],
+                                        ['var_seller_phone'],
+                                        ['var_date_registration'],
+                                        ['var_agent_name_take_object'],
+                                        ['var_agent_name_sell_object'],
+                                        ['var_agent_name_reg_object'],
+                                        ['var_informant'],
+                                        ['var_informant_phone'],
+                                        ['var_informant_reward'],
+                                        ['var_contract'],
+                                        ['var_reference'],
+                                        ['var_video_review'],
+                                    ])
     elif filled_in_correctly.lower() == 'нет':
         await state.reset_state()
         await message.answer('Вы отменили отправку', reply_markup=kb_main_menu)

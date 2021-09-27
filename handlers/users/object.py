@@ -3,7 +3,7 @@ from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
 from aiogram.types import ReplyKeyboardRemove
 
-from keyboards.default.apartment import kb_type_of_property, kb_type_of_service
+from keyboards.default.send_by_apartment import kb_type_of_property, kb_type_of_service
 from keyboards.default.delete_object import kb_delete_type_of_property
 from loader import dp
 from states import MenuState, ObjectState

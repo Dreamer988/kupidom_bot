@@ -1,92 +1,59 @@
-import os
 import re
-import googleapiclient.discovery
-import httplib2
+
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
 from aiogram.types import ReplyKeyboardRemove
-from oauth2client.service_account import ServiceAccountCredentials
-from dotenv import load_dotenv
 
 from filters.is_phone import IsPhone
-from keyboards.default.apartment import kb_main_menu
-from keyboards.default.search import kb_word_object, kb_go_start
+from google_work.google_work import GoogleWork
+from keyboards.default.send_by_apartment import kb_main_menu
+from keyboards.default.search import kb_go_start
 from loader import dp
 from states import SearchState
-
-load_dotenv()
-
-
-def binary_search(array_number, number: int):
-    left_point = 0
-    right_point = len(array_number)
-    middle_point = int((right_point + left_point) / 2)
-    while (right_point - 1 > left_point):
-        if number == int(array_number[middle_point]):
-            return middle_point
-        elif number < int(array_number[middle_point]):
-            right_point = middle_point
-            middle_point = int((right_point + left_point) / 2)
-        elif number > int(array_number[middle_point]):
-            left_point = middle_point
-            middle_point = int((right_point + left_point) / 2)
-
-    return False
+from utils.binary_search import binary_search
 
 
 def search_by_number(number):
-    CREDENTAILS_FILE = os.getenv('CREDENTAILS_FILE')
-    credentials = ServiceAccountCredentials.from_json_keyfile_name(
-        CREDENTAILS_FILE,
-        ['https://www.googleapis.com/auth/spreadsheets',
-         'https://www.googleapis.com/auth/drive'])
-    httpAuth = credentials.authorize(httplib2.Http())
-    service = googleapiclient.discovery.build('sheets', 'v4', http=httpAuth)
-    spreadsheet_id = "1dNu9kjbn02aFVeQz3Uk8ivwW2QQUENApoDqbeM2LEl0"
+    number_sheets = GoogleWork().google_get_values(sheet_id="1dNu9kjbn02aFVeQz3Uk8ivwW2QQUENApoDqbeM2LEl0",
+                                                   name_list="Сборка номеров",
+                                                   start_col="H",
+                                                   end_col="M",
+                                                   major_dimension="COLUMNS")
 
-    number_sheets = service.spreadsheets().values().get(
-        spreadsheetId=spreadsheet_id,
-        range=f"Общая база!A:F",
-        majorDimension="COLUMNS"
-    ).execute()
+    broker_sheets = GoogleWork().google_get_values(sheet_id="1dNu9kjbn02aFVeQz3Uk8ivwW2QQUENApoDqbeM2LEl0",
+                                                   name_list="Маклера",
+                                                   start_col="A",
+                                                   end_col="A",
+                                                   major_dimension="COLUMNS")
 
-    broker_sheets = service.spreadsheets().values().get(
-        spreadsheetId=spreadsheet_id,
-        range=f"Маклера!A:A",
-        majorDimension="COLUMNS"
-    ).execute()
-
-    broker_number = int('998' + str(number))
-    number_point = binary_search(number_sheets['values'][0], number)
-    broker_point = binary_search(broker_sheets['values'][0], broker_number)
+    broker_number = '998' + str(number)
+    number_point = binary_search(array=number_sheets[0], search_value=number)
+    broker_point = binary_search(array=broker_sheets[0], search_value=broker_number)
 
     if broker_point:
         return 'Маклер'
-
     elif number_point:
-        answer = list()
+        # Устанавливаем найденную позицию на 10 меньше, чтобы взять дубликаты номеров если они имеются
         number_point = number_point - 10
+        # Проходимся по циклу из 21 повторений, чтобы взять дубликаты номеров если они имеются
         for num in range(21):
             number_point += 1
-            res = list()
-            if str(number) == number_sheets['values'][0][number_point]:
-                number_object = number_sheets['values'][0][number_point]
-                id = number_sheets['values'][1][number_point]
-                street = number_sheets['values'][2][number_point]
-                point = number_sheets['values'][3][number_point]
-                apartment = number_sheets['values'][4][number_point]
-                home = number_sheets['values'][5][number_point]
-                res.append(number_object)
-                res.append(id)
-                res.append(street)
-                res.append(point)
-                res.append(apartment)
-                res.append(home)
-                answer.append(res)
+            objects = []
+            if str(number) == number_sheets[0][number_point]:
+                object_value = [
+                    number_sheets[0][number_point],
+                    number_sheets[1][number_point],
+                    number_sheets[2][number_point],
+                    number_sheets[3][number_point],
+                    number_sheets[4][number_point],
+                    number_sheets[5][number_point],
+                ]
             else:
                 continue
-        return answer
+
+            objects.append(object_value)
+            return objects
     else:
         return 'Нету в базе'
 
@@ -94,22 +61,26 @@ def search_by_number(number):
 @dp.message_handler(IsPhone(), state=SearchState.SearchNumber_Q1)
 async def search(message: types.Message, state=FSMContext):
     number_object = message.text
+    # Получаем с помощью регулярного выражения только числа
     decor_number = re.findall(r'\d+', number_object)
+    # Получаем 9 чисел с правой стороны
     decor_number = int(''.join(decor_number)[-9:])
+    # Передаем отформатированный номер функции для бинарного поиска и получаем позицию номера в списке
     objects = search_by_number(decor_number)
+
     if objects == 'Маклер':
-        await message.answer(f'{objects}')
+        await message.answer('Маклер')
     elif objects == 'Нету в базе':
         await message.answer('Номера нету в базе данных')
     else:
         await message.answer('Все варианты найденые по номеру телефона:')
-        for obj in objects:
-            await message.answer(f"Номер телефона:  {obj[0]}\n"
-                                 f"ID:  {obj[1]}\n"
-                                 f"Квартал/Район:  {obj[2]}\n"
-                                 f"Ориентир:  {obj[3]}\n"
-                                 f"Квартира:  {obj[4]}\n"
-                                 f"Дом:  {obj[5]}\n"
+        for object_value in objects:
+            await message.answer(f"Номер телефона:  {object_value[0]}\n"
+                                 f"ID:  {object_value[1]}\n"
+                                 f"Квартал/Район:  {object_value[2]}\n"
+                                 f"Ориентир:  {object_value[3]}\n"
+                                 f"Квартира:  {object_value[4]}\n"
+                                 f"Дом:  {object_value[5]}\n"
                                  )
 
     await message.answer(f"Выберите нужный вам вариант", reply_markup=kb_go_start)

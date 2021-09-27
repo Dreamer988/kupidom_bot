@@ -1,3 +1,5 @@
+from sql.sql_query import SqlQuery
+from sql.stock_table_query import create_db_agents, create_db_managers, create_db_bot_timer, create_db_olx
 from utils.set_bot_commands import set_default_commands
 
 
@@ -15,5 +17,15 @@ async def on_startup(dp):
 if __name__ == '__main__':
     from aiogram import executor
     from handlers import dp
+
+    db_tables = SqlQuery().get_all_name_tables()
+    if 'agents' not in db_tables:
+        create_db_agents()
+    if 'managers' not in db_tables:
+        create_db_managers()
+    if 'bot_timer' not in db_tables:
+        create_db_bot_timer()
+    if 'olx' not in db_tables:
+        create_db_olx()
 
     executor.start_polling(dp, on_startup=on_startup)

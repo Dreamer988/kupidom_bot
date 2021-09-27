@@ -1,3 +1,3 @@
-from .kb_delete_type_of_property import kb_delete_type_of_property
-from .kb_reason_delete import kb_reason_delete
-from .kb_yes_or_no import kb_yes_or_no
+from .kb_delete_type_of_property import kb_delete_type_of_property, kb_delete_type_of_property_back
+from .kb_reason_delete import kb_reason_delete, kb_reason_delete_back
+from .kb_yes_or_no import kb_yes_or_no, kb_yes_or_no_back

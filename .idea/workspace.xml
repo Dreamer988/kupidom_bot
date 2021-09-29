@@ -4,211 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fbaf17e9-9a14-4bda-9fc9-4f9d966aa6c8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/kupidom_telegram_bot.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/filters/is_date.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/filters/password_verification.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/filters/verifi_phone_to_db.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/filters/verifi_sector_to_db.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/filters/verifi_telegram_id_to_db.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/filters/verifi_type_of_property_to_db.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/google_work/google_work.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/users/object_active.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/users/send_buy_apartment.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/users/send_buy_commerce.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/users/system.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/users/system_olx.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/users/system_user.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/users/system_user_add_agent.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/users/system_user_add_manager.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/users/system_user_delete_agent.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/users/system_user_delete_manager.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/users/system_user_edit_agent.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/users/system_user_edit_manager.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/users/system_user_show_agent.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/users/system_user_show_manager.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/keyboards/default/rent_house/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_menu.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/keyboards/default/send_by_house/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/keyboards/default/step_back/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/keyboards/default/step_back/kb_back.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/keyboards/default/system/kb_olx.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/keyboards/default/system/kb_users.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/keyboards/default/system/kb_users_add.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/keyboards/default/system/kb_users_delete.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/keyboards/default/system/kb_users_edit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/keyboards/default/system/kb_users_edit_agent_menu.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/keyboards/default/system/kb_users_edit_exit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/keyboards/default/system/kb_users_edit_manager_menu.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/keyboards/default/system/kb_users_rang.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/keyboards/default/system/kb_users_show.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/keyboards/default/system/kb_users_type_of_property.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql/connection.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql/sql_query.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql/stock_table_query.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/states/SystemState.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/binary_search.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/filters/user_access.py" beforeDir="false" afterPath="$PROJECT_DIR$/filters/user_access.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/filters/user_admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/filters/user_admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/google/google_sendler.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/active_object.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/apartment.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/broker.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/broker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/by_sell.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/buy_sell.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/commerce.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/delete_object.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/object_delete.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/deposit.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/deposit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/echo.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/echo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/edit_object.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/object_edit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/menu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/object.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/object.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/prepayment.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/prepayment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/registration.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/registration.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/rent_apartment.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/rent_apartment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/rent_commerce.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/rent_commerce.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/search_by_id.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/search_by_id.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/search_by_number.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/search_by_number.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/start.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/state_check.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/system_admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/apartment/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_apartment/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/apartment/kb_air_conditioning.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_air_conditioning.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/apartment/kb_apartment_layout.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_apartment_layout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/apartment/kb_back.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/apartment/kb_balcony_size.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_balcony_size.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/apartment/kb_ceiling_height.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_ceiling_height.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/apartment/kb_distance_to_metro.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_distance_to_metro.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/apartment/kb_district.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_district.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/apartment/kb_elevator_condition.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_elevator_condition.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/apartment/kb_furniture.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_furniture.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/apartment/kb_infrastructure.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_infrastructure.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/apartment/kb_location_the_road.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_location_the_road.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/apartment/kb_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_menu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/apartment/kb_number_floor.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_number_floor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/apartment/kb_number_room.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_number_room.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/apartment/kb_redevelopment.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_redevelopment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/apartment/kb_registration_date.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_registration_date.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/apartment/kb_repair.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_repair.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/apartment/kb_roof_condition.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_roof_condition.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/apartment/kb_side_building.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_side_building.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/apartment/kb_technics.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_technics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/apartment/kb_toilet.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_toilet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/apartment/kb_type_of_building.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_type_of_building.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/apartment/kb_type_of_layout.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_type_of_layout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/apartment/kb_type_of_property.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_type_of_property.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/apartment/kb_type_of_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_type_of_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/apartment/kb_type_parking.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_type_parking.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/apartment/kb_yes_or_no.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_yes_or_no.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/by_sell/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/by_sell/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/by_sell/kb_contract.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/by_sell/kb_contract.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/by_sell/kb_currency.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/by_sell/kb_currency.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/by_sell/kb_menu_by_sell.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/by_sell/kb_menu_by_sell.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/by_sell/kb_reference.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/by_sell/kb_reference.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/by_sell/kb_type_transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/by_sell/kb_type_transaction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/by_sell/kb_video_review.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/by_sell/kb_video_review.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/kb_appointment.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_appointment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/kb_back.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/kb_business.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_business.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/kb_completed_building.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_completed_building.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/kb_distance_to_metro.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_distance_to_metro.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/kb_district.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_district.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/kb_freestanding.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_freestanding.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/kb_furniture.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_furniture.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/kb_infrastructure.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_infrastructure.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/kb_location_the_road.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_location_the_road.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/kb_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_menu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/kb_non_residential.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_non_residential.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/kb_number_floor.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_number_floor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/kb_number_of_buildings.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_number_of_buildings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/kb_number_room.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_number_room.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/kb_power_supply.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_power_supply.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/kb_repair.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_repair.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/kb_security.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_security.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/kb_sewerage.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_sewerage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/kb_side_building.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_side_building.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/kb_system_gas.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_system_gas.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/kb_system_heating.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_system_heating.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/kb_technics.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_technics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/kb_tenants.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_tenants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/kb_toilet.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_toilet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/kb_traffic_level.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_traffic_level.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/kb_type_of_building.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_type_of_building.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/kb_type_parking.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_type_parking.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/commerce/kb_yes_or_no.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_yes_or_no.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/delete_object/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/delete_object/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/delete_object/kb_delete_type_of_property.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/delete_object/kb_delete_type_of_property.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/delete_object/kb_reason_delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/delete_object/kb_reason_delete.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/delete_object/kb_yes_or_no.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/delete_object/kb_yes_or_no.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/house/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/google_work/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_apartment/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_apartment/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_air_conditioning.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_air_conditioning.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_apartment_layout.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_apartment_layout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_balcony_size.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_balcony_size.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_ceiling_height.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_ceiling_height.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_distance_to_metro.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_distance_to_metro.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_district.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_district.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_elevator_condition.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_elevator_condition.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_entrance.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_entrance.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_furniture.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_furniture.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_infrastructure.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_infrastructure.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_location_the_road.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_location_the_road.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_number_floor.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_number_floor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_number_room.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_number_room.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_prepayment.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_prepayment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_redevelopment.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_redevelopment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_repair.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_repair.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_roof_condition.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_roof_condition.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_side_building.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_side_building.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_technics.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_technics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_toilet.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_toilet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_type_of_building.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_type_of_building.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_type_of_layout.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_type_of_layout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_type_parking.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_type_parking.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_yes_or_no.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_yes_or_no.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_appointment.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_appointment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_back.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_business.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_business.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_completed_building.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_completed_building.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_distance_to_metro.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_distance_to_metro.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_district.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_district.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_freestanding.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_freestanding.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_furniture.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_furniture.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_infrastructure.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_infrastructure.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_location_the_road.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_location_the_road.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_non_residential.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_non_residential.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_number_floor.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_number_floor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_number_of_buildings.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_number_of_buildings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_number_room.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_number_room.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_power_supply.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_power_supply.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_prepayment.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_prepayment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_redevelopment.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_redevelopment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_repair.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_repair.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_security.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_security.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_sewerage.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_sewerage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_side_building.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_side_building.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_system_gas.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_system_gas.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_system_heating.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_system_heating.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_technics.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_technics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_tenants.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_tenants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_toilet.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_toilet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_traffic_level.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_traffic_level.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_type_of_building.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_type_of_building.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_type_parking.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_type_parking.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_yes_or_no.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_yes_or_no.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/system/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/system/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/system/kb_system_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/system/kb_system_menu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/states/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/states/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/notify_admins.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/notify_admins.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/notify_users.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/notify_users.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/set_bot_commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/set_bot_commands.py" afterDir="false" />
+    <list default="true" id="fbaf17e9-9a14-4bda-9fc9-4f9d966aa6c8" name="Default Changelist" comment="upgrade telegram bot">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,6 +31,9 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/venv/Lib/site-packages/mysql/__init__.py" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectId" id="1unyZhnibBEVfZsaJR8pYa4MCLl" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -242,8 +43,12 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="add_unversioned_files" value="$PROJECT_DIR$/.env" />
+    <property name="add_unversioned_files" value="$PROJECT_DIR$/.env&#10;G:/Python/kupidom_telegram_bot/venv/Lib/site-packages/mysql/__init__.py" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/keyboards/default/system" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="ReaderModeSettings">
+    <option name="enabled" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -302,7 +107,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="object_active" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="connection" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="kupidom_telegram_bot" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -310,11 +115,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/handlers/users" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/sql" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="G:\Python\kupidom_telegram_bot\handlers\users\object_active.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sql/connection.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -368,10 +173,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.app" />
+        <item itemvalue="Python.connection" />
         <item itemvalue="Python.system_user_add_agent" />
         <item itemvalue="Python.config" />
         <item itemvalue="Python.search_by_id" />
-        <item itemvalue="Python.object_active" />
       </list>
     </recent_temporary>
   </component>
@@ -384,6 +189,14 @@
       <option name="presentableId" value="Default" />
       <updated>1625315704911</updated>
     </task>
+    <task id="LOCAL-00001" summary="upgrade telegram bot">
+      <created>1632710277285</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1632710277285</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -397,6 +210,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="upgrade telegram bot" />
+    <option name="LAST_COMMIT_MESSAGE" value="upgrade telegram bot" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -9,7 +9,7 @@ kb_infrastructure = ReplyKeyboardMarkup(
             KeyboardButton(text='Остановка')
         ],
         [
-            KeyboardButton(text='Больница'),
+            KeyboardButton(text='Рынок'),
             KeyboardButton(text='Торговый центр')
         ],
         [
@@ -35,7 +35,7 @@ kb_infrastructure_back = ReplyKeyboardMarkup(
             KeyboardButton(text='Остановка')
         ],
         [
-            KeyboardButton(text='Больница'),
+            KeyboardButton(text='Рынок'),
             KeyboardButton(text='Торговый центр')
         ],
         [

@@ -1,6 +1,6 @@
 import time
 
-from aiogram import types
+from aiogram import types, Dispatcher
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
 from aiogram.types import ReplyKeyboardRemove
@@ -37,20 +37,23 @@ def verified_data_time(telegram_id):
     )
     db_day = SqlQuery().get_column_by_param(
         table_name='bot_timer',
-        get_column_name='days',
+        get_column_name='day',
         search_column_name='telegram_id',
         search_value=telegram_id
     )
     db_hour = SqlQuery().get_column_by_param(
         table_name='bot_timer',
-        get_column_name='hours',
+        get_column_name='hour',
         search_column_name='telegram_id',
         search_value=telegram_id
     )
-    count_day = count_day[0][0]
-    count_hours = count_hours[0][0]
-    db_day = db_day[0][0]
-    db_hour = db_hour[0][0]
+    try:
+        count_day = count_day[0][0]
+        count_hours = count_hours[0][0]
+        db_day = db_day[0][0]
+        db_hour = db_hour[0][0]
+    except:
+        return 'Вы не агент! Вас нету в базе.'
 
     def verified_by_id(user_id):
         all_user_id = SqlQuery().get_column(table_name='bot_timer',
@@ -63,15 +66,15 @@ def verified_data_time(telegram_id):
                 continue
         return False
 
-    def verified_by_date():
+    def verified_by_date(user_id):
         if now_day > db_day:
             SqlQuery().edit_row(
                 table_name='bot_timer',
                 search_column_name='telegram_id',
-                search_value=telegram_id,
+                search_value=user_id,
                 edit_param=[
                     f'count_day=0',
-                    f'count_hour=0',
+                    f'count_hours=0',
                     f'day={now_day}',
                     f'hour={now_hour}'
                 ]
@@ -81,31 +84,59 @@ def verified_data_time(telegram_id):
             SqlQuery().edit_row(
                 table_name='bot_timer',
                 search_column_name='telegram_id',
-                search_value=telegram_id,
+                search_value=user_id,
                 edit_param=[
-                    f'count_hour=0',
+                    f'count_hours=0',
                     f'hour={now_hour}'
                 ]
             )
             return True
         else:
-            return False
+            return True
 
     def verified_by_limit():
-        if count_day > limit_day:
+        print(f"{count_day} > {limit_day}")
+        print(f"{count_hours} > {limit_hour}")
+        if int(count_day) > int(limit_day):
             return f'Вы привысили норму в день!\nНорма в день составляет {limit_day} шт.'
-        elif count_hours > limit_hour:
+        elif int(count_hours) > int(limit_hour):
             return f'Вы привысили норму в час!\nНорма в час составляет {limit_hour} шт.'
         else:
             return True
 
-    if verified_by_id():
-        if verified_by_limit() == True and verified_by_date() == True:
-            return True
-        else:
-            return False
+    if verified_by_id(telegram_id) and verified_by_date(telegram_id) and verified_by_limit():
+        return verified_by_limit()
     else:
-        return 'Вы не агент по недвижимости!\nДля вас эта функция закрыта'
+        return False
+
+
+def add_point(telegram_id):
+    count_day = SqlQuery().get_column_by_param(
+        table_name="bot_timer",
+        get_column_name="count_day",
+        search_column_name="telegram_id",
+        search_value=telegram_id
+    )
+    count_hours = SqlQuery().get_column_by_param(
+        table_name='bot_timer',
+        get_column_name='count_hours',
+        search_column_name='telegram_id',
+        search_value=telegram_id
+    )
+
+    count_day = count_day[0][0]
+    count_hours = count_hours[0][0]
+
+    SqlQuery().edit_row(
+        table_name="bot_timer",
+        search_column_name="telegram_id",
+        search_value=telegram_id,
+        edit_param=[f"`count_day` = '{count_day + 1}'"])
+    SqlQuery().edit_row(
+        table_name="bot_timer",
+        search_column_name="telegram_id",
+        search_value=telegram_id,
+        edit_param=[f"`count_hours` = '{count_hours + 1}'"])
 
 
 # Квартиры
@@ -115,7 +146,8 @@ def search_by_id_apartment(id_row, user_id):
                                             start_col="A",
                                             end_col="BE",
                                             major_dimension="ROWS")
-    if verified_data_time(user_id):
+    print(user_id)
+    if verified_data_time(user_id) == True:
         for row in values:
             if str(row[0]) == str(id_row):
                 try:
@@ -147,6 +179,8 @@ def search_by_id_apartment(id_row, user_id):
 
                     if len(row) >= 51:
                         answer = answer + f'Ссылка на сайт:  {row[51]}\n'
+
+                    add_point(user_id)
                 except:
                     return 'Не удалось получить данные с базы'
 
@@ -166,7 +200,7 @@ def search_by_id_commerce(id_row, user_id):
                                             end_col="BE",
                                             major_dimension="ROWS")
 
-    if verified_data_time(user_id):
+    if verified_data_time(user_id) == True:
         for row in values:
             if str(row[0]) == str(id_row):
                 try:
@@ -202,7 +236,10 @@ def search_by_id_commerce(id_row, user_id):
                 except:
                     return 'Не удалось получить данные с базы'
 
-                return answer
+                if not answer:
+                    pass
+                else:
+                    return answer
             else:
                 continue
         return 'Объекта нету в базе'
@@ -217,7 +254,7 @@ def search_by_id_home(id_row, user_id):
                                             start_col="A",
                                             end_col="BE",
                                             major_dimension="ROWS")
-    if verified_data_time(user_id):
+    if verified_data_time(user_id) == True:
         for row in values:
             if str(row[0]) == str(id_row):
                 try:
@@ -252,7 +289,10 @@ def search_by_id_home(id_row, user_id):
                 except:
                     return 'Не удалось получить данные с базы'
 
-                return answer
+                if not answer:
+                    pass
+                else:
+                    return answer
             else:
                 continue
         return 'Объекта нету в базе'
@@ -267,7 +307,7 @@ def search_by_id_apartment_rent(id_row, user_id):
                                             start_col="A",
                                             end_col="BE",
                                             major_dimension="ROWS")
-    if verified_data_time(user_id):
+    if verified_data_time(user_id) == True:
         for row in values:
             if str(row[0]) == str(id_row):
                 try:
@@ -305,7 +345,10 @@ def search_by_id_apartment_rent(id_row, user_id):
                 except:
                     return 'Не удалось получить данные с базы'
 
-                return answer
+                if not answer:
+                    pass
+                else:
+                    return answer
             else:
                 continue
         return 'Объекта нету в базе'
@@ -320,7 +363,7 @@ def search_by_id_commerce_rent(id_row, user_id):
                                             start_col="A",
                                             end_col="BE",
                                             major_dimension="ROWS")
-    if verified_data_time(user_id):
+    if verified_data_time(user_id) == True:
         for row in values:
             if str(row[0]) == str(id_row):
                 try:
@@ -355,7 +398,10 @@ def search_by_id_commerce_rent(id_row, user_id):
                 except:
                     return 'Не удалось получить данные с базы'
 
-                return answer
+                if not answer:
+                    pass
+                else:
+                    return answer
             else:
                 continue
         return 'Объекта нету в базе'
@@ -370,7 +416,7 @@ def search_by_id_home_rent(id_row, user_id):
                                             start_col="A",
                                             end_col="BE",
                                             major_dimension="ROWS")
-    if verified_data_time(user_id):
+    if verified_data_time(user_id) == True:
         for row in values:
             if str(row[0]) == str(id_row):
                 try:
@@ -405,7 +451,10 @@ def search_by_id_home_rent(id_row, user_id):
                 except:
                     return 'Не удалось получить данные с базы'
 
-                return answer
+                if not answer:
+                    pass
+                else:
+                    return answer
             else:
                 continue
         return 'Объекта нету в базе'
@@ -425,7 +474,6 @@ async def get_row_word(message: types.Message, state=FSMContext):
 async def get_id_row(message: types.Message, state=FSMContext):
     id_row = message.text
     user_id = message.from_user.id
-    user_name = message.from_user.first_name
     if len(id_row) >= 6:
         data = await state.get_data()
         word_row = data['var_word_id']

@@ -489,7 +489,7 @@ async def select_district(message: types.Message, state=FSMContext):
         await state.update_data(var_appointment=appointments)
         await message.answer(f"Выбранные вами назначения {appointments}")
         await message.answer("/--/--/--/--/--/--/------/--/--/--/--/--/--/--/")
-        await message.answer("Имеются ли арендаторы?", reply_markup=kb_tenants_back)
+        await message.answer("Эксклюзив ?", reply_markup=kb_yes_or_no_back)
         await RentCommerceState.next()
 
 
@@ -509,26 +509,12 @@ async def select_district(message: types.Message, state=FSMContext):
         await message.answer(f"Назначение '{message.text}' добавлено", reply_markup=kb_appointment_back)
 
 
-# Состояние RentCommerceState.Q31  -->  Имеются ли арендаторы?
+# Состояние RentCommerceState.Q31  -->  Эксклюзив ?
 @dp.message_handler(state=RentCommerceState.Q31)
 async def select_district(message: types.Message, state=FSMContext):
     if message.text == 'Назад ⬅️':
         await RentCommerceState.Q30.set()
         await message.answer("Выберите назначение", reply_markup=kb_appointment_back)
-    else:
-        tenants = message.text
-
-        await state.update_data(var_tenants=tenants)
-        await message.answer("Эксклюзив ?", reply_markup=kb_yes_or_no_back)
-        await RentCommerceState.next()
-
-
-# Состояние RentCommerceState.Q32  -->  Эксклюзив ?
-@dp.message_handler(state=RentCommerceState.Q32)
-async def select_district(message: types.Message, state=FSMContext):
-    if message.text == 'Назад ⬅️':
-        await RentCommerceState.Q31.set()
-        await message.answer("Имеются ли арендаторы?", reply_markup=kb_tenants_back)
     else:
         exclusive = message.text
 
@@ -537,11 +523,11 @@ async def select_district(message: types.Message, state=FSMContext):
         await RentCommerceState.next()
 
 
-# Состояние RentCommerceState.Q33  -->  Выберите систему электроснабжения
-@dp.message_handler(state=RentCommerceState.Q33)
+# Состояние RentCommerceState.Q32  -->  Выберите систему электроснабжения
+@dp.message_handler(state=RentCommerceState.Q32)
 async def select_district(message: types.Message, state=FSMContext):
     if message.text == 'Назад ⬅️':
-        await RentCommerceState.Q32.set()
+        await RentCommerceState.Q31.set()
         await message.answer("Эксклюзив ?", reply_markup=kb_yes_or_no_back)
     else:
         power_supply = message.text
@@ -551,11 +537,11 @@ async def select_district(message: types.Message, state=FSMContext):
         await RentCommerceState.next()
 
 
-# Состояние RentCommerceState.Q34  -->  Выберите холодную воду и канализацию
-@dp.message_handler(state=RentCommerceState.Q34)
+# Состояние RentCommerceState.Q33  -->  Выберите холодную воду и канализацию
+@dp.message_handler(state=RentCommerceState.Q33)
 async def select_district(message: types.Message, state=FSMContext):
     if message.text == 'Назад ⬅️':
-        await RentCommerceState.Q33.set()
+        await RentCommerceState.Q32.set()
         await message.answer("Выберите систему электроснабжения", reply_markup=kb_power_supply_back)
     else:
         sewerage = message.text
@@ -565,11 +551,11 @@ async def select_district(message: types.Message, state=FSMContext):
         await RentCommerceState.next()
 
 
-# Состояние RentCommerceState.Q35  -->  Выберите систему газового снабжения
-@dp.message_handler(state=RentCommerceState.Q35)
+# Состояние RentCommerceState.Q34  -->  Выберите систему газового снабжения
+@dp.message_handler(state=RentCommerceState.Q34)
 async def select_district(message: types.Message, state=FSMContext):
     if message.text == 'Назад ⬅️':
-        await RentCommerceState.Q34.set()
+        await RentCommerceState.Q33.set()
         await message.answer("Выберите холодную воду и канализацию", reply_markup=kb_sewerage_back)
     else:
         system_gas = message.text
@@ -579,11 +565,11 @@ async def select_district(message: types.Message, state=FSMContext):
         await RentCommerceState.next()
 
 
-# Состояние RentCommerceState.Q36  -->  Выберите систему отопления и ГВС
-@dp.message_handler(state=RentCommerceState.Q36)
+# Состояние RentCommerceState.Q35  -->  Выберите систему отопления и ГВС
+@dp.message_handler(state=RentCommerceState.Q35)
 async def select_district(message: types.Message, state=FSMContext):
     if message.text == 'Назад ⬅️':
-        await RentCommerceState.Q35.set()
+        await RentCommerceState.Q34.set()
         await message.answer("Выберите систему газового снабжения", reply_markup=kb_system_gas_back)
     else:
         system_heating = message.text
@@ -593,11 +579,11 @@ async def select_district(message: types.Message, state=FSMContext):
         await RentCommerceState.next()
 
 
-# Состояние RentCommerceState.Q37  -->  Дайте описание арендаторов которых хочет собственник
-@dp.message_handler(state=RentCommerceState.Q37)
+# Состояние RentCommerceState.Q36  -->  Дайте описание арендаторов которых хочет собственник
+@dp.message_handler(state=RentCommerceState.Q36)
 async def select_district(message: types.Message, state=FSMContext):
     if message.text == 'Назад ⬅️':
-        await RentCommerceState.Q36.set()
+        await RentCommerceState.Q35.set()
         await message.answer("Выберите систему отопления и ГВС", reply_markup=kb_system_heating_back)
     else:
         tenant_description = message.text
@@ -607,11 +593,11 @@ async def select_district(message: types.Message, state=FSMContext):
         await RentCommerceState.next()
 
 
-# Состояние RentCommerceState.Q38  -->  Укажите цену за месяц ( $ )
-@dp.message_handler(state=RentCommerceState.Q38)
+# Состояние RentCommerceState.Q37  -->  Укажите цену за месяц ( $ )
+@dp.message_handler(state=RentCommerceState.Q37)
 async def select_district(message: types.Message, state=FSMContext):
     if message.text == 'Назад ⬅️':
-        await RentCommerceState.Q37.set()
+        await RentCommerceState.Q36.set()
         await message.answer(f"Дайте описание арендаторов которых хочет собственник", reply_markup=kb_back)
     else:
         month_price = message.text
@@ -621,11 +607,11 @@ async def select_district(message: types.Message, state=FSMContext):
         await RentCommerceState.next()
 
 
-# Состояние RentCommerceState.Q39  -->  Укажите сумму депозита
-@dp.message_handler(state=RentCommerceState.Q39)
+# Состояние RentCommerceState.Q38  -->  Укажите сумму депозита
+@dp.message_handler(state=RentCommerceState.Q38)
 async def select_district(message: types.Message, state=FSMContext):
     if message.text == 'Назад ⬅️':
-        await RentCommerceState.Q38.set()
+        await RentCommerceState.Q37.set()
         await message.answer(f"Укажите цену за месяц ( $ )", reply_markup=kb_back)
     else:
         deposit = message.text
@@ -635,11 +621,11 @@ async def select_district(message: types.Message, state=FSMContext):
         await RentCommerceState.next()
 
 
-# Состояние RentCommerceState.Q40  -->  Выберите за какой срок нужно внести предоплату
-@dp.message_handler(state=RentCommerceState.Q40)
+# Состояние RentCommerceState.Q39  -->  Выберите за какой срок нужно внести предоплату
+@dp.message_handler(state=RentCommerceState.Q39)
 async def select_district(message: types.Message, state=FSMContext):
     if message.text == 'Назад ⬅️':
-        await RentCommerceState.Q39.set()
+        await RentCommerceState.Q38.set()
         await message.answer(f"Укажите сумму депозита", reply_markup=kb_back)
     else:
         prepayment = message.text
@@ -649,11 +635,11 @@ async def select_district(message: types.Message, state=FSMContext):
         await RentCommerceState.next()
 
 
-# Состояние RentCommerceState.Q41  -->  Входят ли коммунальные услуги в стоимость
-@dp.message_handler(state=RentCommerceState.Q41)
+# Состояние RentCommerceState.Q40  -->  Входят ли коммунальные услуги в стоимость
+@dp.message_handler(state=RentCommerceState.Q40)
 async def select_district(message: types.Message, state=FSMContext):
     if message.text == 'Назад ⬅️':
-        await RentCommerceState.Q40.set()
+        await RentCommerceState.Q39.set()
         await message.answer(f"Выберите за какой срок нужно внести предоплату", reply_markup=kb_prepayment_back)
     else:
         camunal = message.text
@@ -663,11 +649,11 @@ async def select_district(message: types.Message, state=FSMContext):
         await RentCommerceState.next()
 
 
-# Состояние RentCommerceState.Q42  -->  Введите срок на который сдается квартира
-@dp.message_handler(state=RentCommerceState.Q42)
+# Состояние RentCommerceState.Q41  -->  Введите срок на который сдается квартира
+@dp.message_handler(state=RentCommerceState.Q41)
 async def select_district(message: types.Message, state=FSMContext):
     if message.text == 'Назад ⬅️':
-        await RentCommerceState.Q41.set()
+        await RentCommerceState.Q40.set()
         await message.answer(f"Входят ли коммунальные услуги в стоимость", reply_markup=kb_yes_or_no_back)
     else:
         apartment_completion = message.text
@@ -677,11 +663,11 @@ async def select_district(message: types.Message, state=FSMContext):
         await RentCommerceState.next()
 
 
-# Состояние RentCommerceState.Q43  -->  Укажите имя собственника
-@dp.message_handler(state=RentCommerceState.Q43)
+# Состояние RentCommerceState.Q42  -->  Укажите имя собственника
+@dp.message_handler(state=RentCommerceState.Q42)
 async def select_district(message: types.Message, state=FSMContext):
     if message.text == 'Назад ⬅️':
-        await RentCommerceState.Q42.set()
+        await RentCommerceState.Q41.set()
         await message.answer(f"Введите срок на который сдается квартира", reply_markup=kb_back)
     else:
         owner = message.text
@@ -692,11 +678,11 @@ async def select_district(message: types.Message, state=FSMContext):
         await RentCommerceState.next()
 
 
-# Состояние RentCommerceState.Q44  -->  Введите контактный номер телефона собственника. Пример ввода  987777777
-@dp.message_handler(state=RentCommerceState.Q44)
+# Состояние RentCommerceState.Q43  -->  Введите контактный номер телефона собственника. Пример ввода  987777777
+@dp.message_handler(state=RentCommerceState.Q43)
 async def select_district(message: types.Message, state=FSMContext):
     if message.text == 'Назад ⬅️':
-        await RentCommerceState.Q43.set()
+        await RentCommerceState.Q42.set()
         await message.answer(f"Укажите имя собственника", reply_markup=kb_back)
     else:
         number_phone = message.text
@@ -707,11 +693,11 @@ async def select_district(message: types.Message, state=FSMContext):
         await RentCommerceState.next()
 
 
-# Состояние RentCommerceState.Q45  -->  Если имеется дополнительный номер телефона, введите его
-@dp.message_handler(state=RentCommerceState.Q45)
+# Состояние RentCommerceState.Q44  -->  Если имеется дополнительный номер телефона, введите его
+@dp.message_handler(state=RentCommerceState.Q44)
 async def select_district(message: types.Message, state=FSMContext):
     if message.text == 'Назад ⬅️':
-        await RentCommerceState.Q44.set()
+        await RentCommerceState.Q43.set()
         await message.answer(f"Введите контактный номер телефона собственника. \nПример ввода  987777777",
                              reply_markup=kb_back)
     else:
@@ -722,11 +708,11 @@ async def select_district(message: types.Message, state=FSMContext):
         await RentCommerceState.next()
 
 
-# Состояние RentCommerceState.Q46  -->  Имеется ли информатор ?
-@dp.message_handler(state=RentCommerceState.Q46)
+# Состояние RentCommerceState.Q45  -->  Имеется ли информатор ?
+@dp.message_handler(state=RentCommerceState.Q45)
 async def select_district(message: types.Message, state=FSMContext):
     if message.text == 'Назад ⬅️':
-        await RentCommerceState.Q46.set()
+        await RentCommerceState.Q44.set()
         await message.answer(f"Если имеется дополнительный номер телефона, введите его",
                              reply_markup=kb_back)
     else:
@@ -737,11 +723,11 @@ async def select_district(message: types.Message, state=FSMContext):
         await RentCommerceState.next()
 
 
-# Состояние RentCommerceState.Q47  -->  Напишите полное описание квартиры
-@dp.message_handler(state=RentCommerceState.Q47)
+# Состояние RentCommerceState.Q46  -->  Напишите полное описание квартиры
+@dp.message_handler(state=RentCommerceState.Q46)
 async def select_district(message: types.Message, state=FSMContext):
     if message.text == 'Назад ⬅️':
-        await RentCommerceState.Q46.set()
+        await RentCommerceState.Q45.set()
         await message.answer(f"Имеется ли информатор ?", reply_markup=kb_yes_or_no_back)
     else:
         description = message.text
@@ -751,11 +737,11 @@ async def select_district(message: types.Message, state=FSMContext):
         await RentCommerceState.next()
 
 
-# Состояние ApartmentState.Q48  -->  Рекламировать на торговых площадках ?
-@dp.message_handler(state=RentCommerceState.Q48)
+# Состояние ApartmentState.Q47  -->  Рекламировать на торговых площадках ?
+@dp.message_handler(state=RentCommerceState.Q47)
 async def select_district(message: types.Message, state=FSMContext):
     if message.text == 'Назад ⬅️':
-        await RentCommerceState.Q47.set()
+        await RentCommerceState.Q46.set()
         await message.answer(f"Напишите полное описание квартиры", reply_markup=kb_back)
     else:
         public = message.text
@@ -765,8 +751,8 @@ async def select_district(message: types.Message, state=FSMContext):
         await RentCommerceState.next()
 
 
-# Состояние ApartmentState.Q49  -->  Все заполнил(-а) правильно ?
-@dp.message_handler(state=RentCommerceState.Q49)
+# Состояние ApartmentState.Q48  -->  Все заполнил(-а) правильно ?
+@dp.message_handler(state=RentCommerceState.Q48)
 async def select_district(message: types.Message, state=FSMContext):
     filled_in_correctly = message.text
 

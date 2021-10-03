@@ -5,10 +5,10 @@ from keyboards.default.step_back.kb_back import back
 kb_business = ReplyKeyboardMarkup(
     keyboard=[
         [
-            KeyboardButton(text='Рабочий бизнес'),
+            KeyboardButton(text='Рабочий бизнес с фирмой'),
         ],
         [
-            KeyboardButton(text='Рабочий бизнес с фирмой')
+            KeyboardButton(text='Нет')
         ]
     ],
     resize_keyboard=True,
@@ -18,10 +18,10 @@ kb_business = ReplyKeyboardMarkup(
 kb_business_back = ReplyKeyboardMarkup(
     keyboard=[
         [
-            KeyboardButton(text='Рабочий бизнес'),
+            KeyboardButton(text='Рабочий бизнес с фирмой'),
         ],
         [
-            KeyboardButton(text='Рабочий бизнес с фирмой')
+            KeyboardButton(text='Нет')
         ]
     ],
     resize_keyboard=True,

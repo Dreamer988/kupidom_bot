@@ -51,4 +51,3 @@ class RentCommerceState(StatesGroup):
     Q46 = State()
     Q47 = State()
     Q48 = State()
-    Q49 = State()

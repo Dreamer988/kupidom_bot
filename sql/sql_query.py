@@ -33,7 +33,7 @@ class SqlQuery:
         # Получаем объект соединения с базой
         self.connection = connect.connector
 
-    def create_table(self, query):
+    def  create_table(self, query):
         """
         Создание таблиц в БД
         """

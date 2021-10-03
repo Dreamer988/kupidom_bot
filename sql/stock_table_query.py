@@ -73,6 +73,7 @@ def create_db_bot_timer():
     try:
         query = """
                 CREATE TABLE bot_timer (
+                    `id` INT AUTO_INCREMENT NOT NULL UNIQUE,
                     `telegram_id` BIGINT UNIQUE,
                     `count_day` INT,
                     `count_hours` INT,

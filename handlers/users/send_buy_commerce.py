@@ -368,7 +368,7 @@ async def select_district(message: types.Message, state=FSMContext):
     else:
         number_of_buildings = message.text
 
-        await state.update_data(var_desc_territory=number_of_buildings)
+        await state.update_data(var_number_of_buildings=number_of_buildings)
         await message.answer("Имеется ли дополнительная территория ?", reply_markup=kb_yes_or_no_back)
         await CommerceState.next()
 
@@ -775,66 +775,66 @@ async def select_district(message: types.Message, state=FSMContext):
         answer = await state.get_data()
         await state.reset_state()
         await message.answer('Ваша объективка отправлена)', reply_markup=kb_main_menu)
-        GoogleWork.google_add_row(sheet_id='1-B80joNKTOSTIJRLiACOcfH1E3dH5yrNPbS-CU5Bvxc',
-                                  name_list='Продажа коммерции',
-                                  array_data=[
-                                      answer['var_type_of_property'],  # A --> ID
-                                      answer['var_district'],  # B --> Район
-                                      answer['var_reference_point'],  # C --> Ориентир
-                                      answer['var_street'],  # D --> Улица
-                                      answer['var_counter_room'],  # E --> Кол-во комнат
-                                      answer['var_floor'],  # F --> Этаж
-                                      answer['var_number_floor'],  # G --> Этажность
-                                      answer['var_commerce_area'],  # H --> S общ
-                                      answer['var_effective_area'],  # I --> S полезная
-                                      answer['var_type_repair'],  # J --> Ремонт
-                                      answer['var_type_of_building'],  # K --> Тип строения
-                                      answer['var_type_of_service'],  # L --> Тип недвижимости
-                                      answer['var_appointment'],  # M --> Назначение
-                                      answer['var_number_of_buildings'],  # N --> Кол-во строений
-                                      answer['var_land_area'],  # O --> Площадь земли
-                                      answer['var_non_residential'],  # P --> Переведено в нежилое
-                                      answer['var_ceiling_height'],  # Q --> Высота потолков
-                                      answer['var_description'],  # R --> Описание
-                                      answer['var_traffic_level'],  # S --> Проходимость
-                                      answer['var_add_territory'],  # T --> Доп.территория
-                                      answer['var_desc_territory'],  # U --> Описание территории
-                                      answer['var_completed_building'],  # V --> Завершено строительство
-                                      answer['var_type_parking'],  # W --> Парковка
-                                      answer['var_price'],  # X --> Стартовая цена
-                                      answer['var_full_price'],  # Y --> Цена
-                                      answer['var_owner'],  # Z --> Имя собственника
-                                      answer['var_number_phone'],  # AA --> Номер телефона
-                                      answer['var_additional_number_phone'],  # AB --> Доп.номер
-                                      '',  # AC --> Зарубежный номер
-                                      answer['var_location_the_road'],  # AD --> Расположение от дороги61
-                                      answer['var_side_building'],  # AE --> Расположение в здании
-                                      answer['var_number_home'],  # AF --> Номер дома
-                                      answer['var_number_apartment'],  # AG --> Номер квартиры
-                                      answer['var_business'],  # AH --> Бизнес
-                                      answer['var_freestanding'],  # AI --> Здание
-                                      answer['var_tenants'],  # AG --> Арендаторы
-                                      '',  # AK --> Заголовок
-                                      '',  # AL --> Описание
-                                      '',  # AM --> Заголовок UZB
-                                      '',  # AN --> Описание UZB
-                                      message.from_user.full_name,  # AO --> Имя агента
-                                      str(date.today()),  # AP --> Дата создания
-                                      str(date.today()),  # AQ --> Дата обзвона
-                                      answer['var_informant'],  # AR --> Информатор
-                                      answer['var_infrastructures'],  # AS --> Инфраструктура
-                                      answer['var_distance_to_metro'],  # AT --> Метро
-                                      answer['var_system_heating'],  # AU --> Отопление
-                                      answer['var_sewerage'],  # AV --> ХВС
-                                      answer['var_power_supply'],  # AW --> Электрика
-                                      answer['var_system_gas'],  # AX --> Газ
-                                      answer['var_furniture'],  # AY --> Мебель
-                                      answer['var_technics'],  # AZ --> Техника
-                                      answer['var_add_technics'],  # BA --> Доп.оборудование
-                                      answer['var_security'],  # BB --> Безопасность
-                                      answer['var_exclusive'],  # BC --> Эксклюзив
-                                      answer['var_public'],  # BD --> Рекламировать
-                                  ])
+        GoogleWork().google_add_row(sheet_id='1-B80joNKTOSTIJRLiACOcfH1E3dH5yrNPbS-CU5Bvxc',
+                                    name_list='Продажа коммерции',
+                                    array_data=[
+                                        answer['var_type_of_property'],  # A --> ID
+                                        answer['var_district'],  # B --> Район
+                                        answer['var_reference_point'],  # C --> Ориентир
+                                        answer['var_street'],  # D --> Улица
+                                        answer['var_counter_room'],  # E --> Кол-во комнат
+                                        answer['var_floor'],  # F --> Этаж
+                                        answer['var_number_floor'],  # G --> Этажность
+                                        answer['var_commerce_area'],  # H --> S общ
+                                        answer['var_effective_area'],  # I --> S полезная
+                                        answer['var_type_repair'],  # J --> Ремонт
+                                        answer['var_type_of_building'],  # K --> Тип строения
+                                        answer['var_type_of_service'],  # L --> Тип недвижимости
+                                        answer['var_appointment'],  # M --> Назначение
+                                        answer['var_number_of_buildings'],  # N --> Кол-во строений
+                                        answer['var_land_area'],  # O --> Площадь земли
+                                        answer['var_non_residential'],  # P --> Переведено в нежилое
+                                        answer['var_ceiling_height'],  # Q --> Высота потолков
+                                        answer['var_description'],  # R --> Описание
+                                        answer['var_traffic_level'],  # S --> Проходимость
+                                        answer['var_add_territory'],  # T --> Доп.территория
+                                        answer['var_desc_territory'],  # U --> Описание территории
+                                        answer['var_completed_building'],  # V --> Завершено строительство
+                                        answer['var_type_parking'],  # W --> Парковка
+                                        answer['var_price'],  # X --> Стартовая цена
+                                        answer['var_full_price'],  # Y --> Цена
+                                        answer['var_owner'],  # Z --> Имя собственника
+                                        answer['var_number_phone'],  # AA --> Номер телефона
+                                        answer['var_additional_number_phone'],  # AB --> Доп.номер
+                                        '0',  # AC --> Зарубежный номер
+                                        answer['var_location_the_road'],  # AD --> Расположение от дороги61
+                                        answer['var_side_building'],  # AE --> Расположение в здании
+                                        answer['var_number_home'],  # AF --> Номер дома
+                                        answer['var_number_apartment'],  # AG --> Номер квартиры
+                                        answer['var_business'],  # AH --> Бизнес
+                                        answer['var_freestanding'],  # AI --> Здание
+                                        answer['var_tenants'],  # AG --> Арендаторы
+                                        '0',  # AK --> Заголовок
+                                        '0',  # AL --> Описание
+                                        '0',  # AM --> Заголовок UZB
+                                        '0',  # AN --> Описание UZB
+                                        message.from_user.full_name,  # AO --> Имя агента
+                                        str(date.today()),  # AP --> Дата создания
+                                        str(date.today()),  # AQ --> Дата обзвона
+                                        answer['var_informant'],  # AR --> Информатор
+                                        answer['var_infrastructures'],  # AS --> Инфраструктура
+                                        answer['var_distance_to_metro'],  # AT --> Метро
+                                        answer['var_system_heating'],  # AU --> Отопление
+                                        answer['var_sewerage'],  # AV --> ХВС
+                                        answer['var_power_supply'],  # AW --> Электрика
+                                        answer['var_system_gas'],  # AX --> Газ
+                                        answer['var_furniture'],  # AY --> Мебель
+                                        answer['var_technics'],  # AZ --> Техника
+                                        answer['var_add_technics'],  # BA --> Доп.оборудование
+                                        answer['var_security'],  # BB --> Безопасность
+                                        answer['var_exclusive'],  # BC --> Эксклюзив
+                                        answer['var_public'],  # BD --> Рекламировать
+                                    ])
     elif filled_in_correctly.lower() == 'нет':
         await state.reset_state()
         await message.answer('Вы отменили отправку', reply_markup=kb_main_menu)

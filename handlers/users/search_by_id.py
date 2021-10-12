@@ -58,9 +58,8 @@ def verified_data_time(telegram_id):
     def verified_by_id(user_id):
         all_user_id = SqlQuery().get_column(table_name='bot_timer',
                                             get_column_name='telegram_id')
-        all_user_id = all_user_id[0]
         for current_id in all_user_id:
-            if current_id == user_id:
+            if current_id[0] == user_id:
                 return True
             else:
                 continue

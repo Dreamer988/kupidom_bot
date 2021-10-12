@@ -6,14 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="fbaf17e9-9a14-4bda-9fc9-4f9d966aa6c8" name="Default Changelist" comment="upgrade telegram bot">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/google_work/google_work.py" beforeDir="false" afterPath="$PROJECT_DIR$/google_work/google_work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/users/broker.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/broker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/users/deposit.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/deposit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/users/registration.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/registration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/users/rent_apartment.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/rent_apartment.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/users/rent_commerce.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/rent_commerce.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/users/search_by_id.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/search_by_id.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_business.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_business.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_infrastructure.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_infrastructure.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/users/send_buy_apartment.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/send_buy_apartment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/users/send_buy_commerce.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/send_buy_commerce.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/users/system_user_show_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/system_user_show_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/users/system_user_show_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/system_user_show_manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sql/sql_query.py" beforeDir="false" afterPath="$PROJECT_DIR$/sql/sql_query.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/stock_table_query.py" beforeDir="false" afterPath="$PROJECT_DIR$/sql/stock_table_query.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/states/RentCommerceState.py" beforeDir="false" afterPath="$PROJECT_DIR$/states/RentCommerceState.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,7 +214,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632919117623</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="upgrade telegram bot">
+      <created>1633263502234</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1633263502234</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

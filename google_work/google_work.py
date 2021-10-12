@@ -27,7 +27,7 @@ class GoogleWork:
 
         values = self.service.spreadsheets().values().append(
             spreadsheetId=sheet_id,
-            range=f"{name_list}",
+            range=name_list,
             valueInputOption="USER_ENTERED",
             body={
                 "values": [array_data]

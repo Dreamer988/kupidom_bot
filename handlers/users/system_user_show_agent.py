@@ -28,29 +28,17 @@ async def get_first_name(message: types.Message):
 @dp.message_handler(Text(equals='Да'), state=SystemState.UserShowAgent_Select)
 async def get_first_name(message: types.Message):
     await message.answer('Понял, сейчас отправлю вам полный список !', reply_markup=kb_yes_or_no)
-    agents_telegram_id = array(SqlQuery().get_column(
-        table_name='agents',
-        get_column_name='telegram_id'))
-    agents_first_name = array(SqlQuery().get_column(
-        table_name='agents',
-        get_column_name='first_name'))
-    agents_last_name = array(SqlQuery().get_column(
-        table_name='agents',
-        get_column_name='last_name'))
-    agents_patronymic = array(SqlQuery().get_column(
-        table_name='agents',
-        get_column_name='patronymic'))
-    agents_number_phone = array(SqlQuery().get_column(
-        table_name='agents',
-        get_column_name='phone'))
+    all_row = SqlQuery().get_all_row(table_name='agents')
+    num = 0
     all_agents_param = '   Telegram ID   |   Ф.И.О   |   Номер телефона   \n\n'
-    for num in range(len(agents_telegram_id)):
-        value = f"{num + 1}.  <code>{agents_telegram_id[num]}</code> | " \
-                f"<i>{agents_last_name[num].title()}</i>  " \
-                f"<i>{agents_first_name[num].title()}</i>  " \
-                f"<i>{agents_patronymic[num].title()}</i> | " \
-                f"{agents_number_phone[num]} \n\n"
+    for row in all_row:
+        value = f"{num + 1}.  <code>{row[1]}</code> | " \
+                f"<i>{row[2].title()}</i>  " \
+                f"<i>{row[3].title()}</i>  " \
+                f"<i>{row[4].title()}</i> | " \
+                f"{row[6]} \n\n"
         all_agents_param = all_agents_param + value
+        num = num + 1
 
     await message.answer(all_agents_param)
     await message.answer('Данные пользователей отправлены, пожалуйста введите <b>пароль</b> чтобы продолжить',

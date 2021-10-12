@@ -33,7 +33,7 @@ class SqlQuery:
         # Получаем объект соединения с базой
         self.connection = connect.connector
 
-    def  create_table(self, query):
+    def create_table(self, query):
         """
         Создание таблиц в БД
         """
@@ -194,6 +194,29 @@ class SqlQuery:
                     {table_name}
                 WHERE
                     {join_search_param}
+            """
+        try:
+            # Выполням созданный запрос
+            self.cursor.execute(query_get_row)
+            # Получаем значения
+            values = self.cursor.fetchall()
+            # Преобразуем кортеж в список
+            values = tuple_to_dict(values)
+            # Возвращаем значения
+            return values
+        except Error as e:
+            print(e)
+            return False
+
+    def get_all_row(self, table_name=None):
+
+        # Создаем запрос
+        query_get_row = \
+            f"""
+                SELECT
+                    *
+                FROM
+                    {table_name}
             """
         try:
             # Выполням созданный запрос

@@ -9,7 +9,7 @@ from keyboards.default.rent_commerce import kb_district, kb_location_the_road_ba
     kb_furniture_back, kb_technics_back, kb_side_building_back, kb_type_parking_back, kb_security_back, \
     kb_repair_back, kb_type_of_building_back, kb_redevelopment_back, kb_freestanding_back, kb_appointment_back, \
     kb_power_supply_back, kb_prepayment_back, kb_yes_or_no, kb_sewerage_back, kb_system_gas_back, \
-    kb_system_heating_back, kb_tenants_back, kb_main_menu
+    kb_system_heating_back, kb_tenants_back, kb_main_menu, kb_yes_or_no_back
 from keyboards.default.step_back import kb_back
 from loader import dp
 from states import ObjectState, RentCommerceState
@@ -793,14 +793,14 @@ async def select_district(message: types.Message, state=FSMContext):
                                         answer['var_owner'],  # --> Имя собственника
                                         answer['var_number_phone'],  # --> Номер телефона
                                         answer['var_additional_number_phone'],  # AB --> Доп.номер
-                                        '',  # --> Зарубежный номер
+                                        '0',  # --> Зарубежный номер
                                         answer['var_location_the_road'],  # --> Расположение от дороги
                                         answer['var_number_home'],  # --> Номер дома
                                         answer['var_number_apartment'],  # --> Номер квартиры
-                                        '',  # --> Заголовок
+                                        '0',  # --> Заголовок
                                         answer['var_description'],  # --> Описание
-                                        '',  # --> Заголовок UZB
-                                        '',  # --> Описание UZB
+                                        '0',  # --> Заголовок UZB
+                                        '0',  # --> Описание UZB
                                         message.from_user.full_name,  # --> Имя агента
                                         str(date.today()),  # --> Дата создания
                                         str(date.today()),  # --> Дата обзвона

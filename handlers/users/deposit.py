@@ -198,9 +198,7 @@ async def select_district(message: types.Message, state=FSMContext):
         await state.reset_state()
         await message.answer('Задаток отправлен', reply_markup=kb_main_menu)
         GoogleWork().google_add_row(sheet_id='1cybTRAnHDJ1gRiX5aY9XkD_84LXbMKccQPmjZn4YcCs',
-                                    name_list='Задаток!',
-                                    start_col='A',
-                                    end_col='Q',
+                                    name_list='Задаток',
                                     array_data=[
                                         str(date.today()),
                                         answer['var_type_transaction'],

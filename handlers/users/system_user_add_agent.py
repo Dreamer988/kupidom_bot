@@ -114,7 +114,6 @@ async def get_sector(message: types.Message, state=FSMContext):
 
     await message.answer('Выберите участок за каторый отвечает сотрудник\n(Например: 1, 2, 3)\n'
                          'Участок должен быть только один!', reply_markup=ReplyKeyboardRemove())
-    print(state.get_data())
     await SystemState.UserAddAgent_Q10.set()
 
 

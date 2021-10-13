@@ -56,9 +56,14 @@ def create_db_olx():
     try:
         query = """
                 CREATE TABLE olx (
+                    `id` INT AUTO_INCREMENT PRIMARY KEY,
                     `type_of_property` VARCHAR(100),
+                    `district` VARCHAR(100),
+                    `sector` INT,
+                    `phone` VARCHAR (100),
                     `information` VARCHAR(2000),
-                    `sector` INT )
+                    `date` DATETIME
+                     )
                 """
         # Создаем базу данных
         SqlQuery().create_table(query=query)

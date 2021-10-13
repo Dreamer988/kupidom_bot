@@ -12,6 +12,7 @@ from .system_user_edit_manager import dp
 from .system_olx import dp
 from .object_active import dp
 from .broker import dp
+from .olx import dp
 from .buy_sell import dp
 from .object_delete import dp
 from .deposit import dp

@@ -31,4 +31,4 @@ async def verification_password(message: types.Message):
 @dp.message_handler(Text(equals='OLX'), state=SystemState.MainMenu)
 async def verification_password(message: types.Message):
     await message.answer('Что вы хотите сделать?', reply_markup=kb_olx)
-    await SystemState.OlxMenu.set()
+    await SystemState.OlxStart.set()

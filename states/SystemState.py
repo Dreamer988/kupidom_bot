@@ -84,4 +84,10 @@ class SystemState(StatesGroup):
     UserShowManager_AllUsers = State()
     UserShowManager_CurrentUser = State()
 
-    OlxMenu = State()
+    OlxStart = State()
+    OLX_Q1 = State()
+    OLX_Q2 = State()
+    OLX_Q3 = State()
+    OLX_Q4 = State()
+    OLX_Q5 = State()
+    OLX_Q6 = State()

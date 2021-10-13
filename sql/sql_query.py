@@ -208,6 +208,43 @@ class SqlQuery:
             print(e)
             return False
 
+    def get_row_by_filters(self, table_name=None, search_param=None, filter_col=None, filter_sort='DESC'):
+        """
+        search_param -> list[param]
+        *param -> str, key = 'value'
+        filter_col - столбец по которому надо сортировать
+
+        filter_sort:
+        DESC -> сортировка по убыванию
+        ASC -> сортировка по возрастанию
+        """
+        join_search_param = ' and '.join(search_param)
+
+        # Создаем запрос
+        query_get_row = \
+            f"""
+                SELECT
+                    *
+                FROM
+                    {table_name}
+                WHERE
+                    {join_search_param}
+                ORDER BY 
+                    {filter_col} {filter_sort}
+            """
+        try:
+            # Выполням созданный запрос
+            self.cursor.execute(query_get_row)
+            # Получаем значения
+            values = self.cursor.fetchall()
+            # Преобразуем кортеж в список
+            values = tuple_to_dict(values)
+            # Возвращаем значения
+            return values
+        except Error as e:
+            print(e)
+            return False
+
     def get_all_row(self, table_name=None):
 
         # Создаем запрос

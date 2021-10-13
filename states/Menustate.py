@@ -7,3 +7,4 @@ class MenuState(StatesGroup):
     Search = State()
     Broker = State()
     Broker_Q1 = State()
+    OLX = State()

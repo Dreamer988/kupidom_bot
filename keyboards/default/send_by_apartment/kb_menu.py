@@ -13,7 +13,8 @@ kb_main_menu = ReplyKeyboardMarkup(
             KeyboardButton(text="Маклер")
         ],
         [
-            KeyboardButton(text="OLX")
+            KeyboardButton(text="OLX"),
+            KeyboardButton(text="Обзвон")
         ]
     ],
     resize_keyboard=True,
@@ -36,7 +37,8 @@ kb_object_menu = ReplyKeyboardMarkup(
             KeyboardButton(text="Горящий объект")
         ],
         [
-            KeyboardButton(text="OLX")
+            KeyboardButton(text="OLX"),
+            KeyboardButton(text="Обзвон")
         ]
     ],
     resize_keyboard=True,

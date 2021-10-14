@@ -67,9 +67,19 @@ async def delete_agent_to_db(message: types.Message, state=FSMContext):
     values = await state.get_data()
     del_phone = values['var_delete_phone']
     if message.text.strip().lower() == 'да':
-        SqlQuery().delete_row(table_name='agents',
-                              search_column_name='phone',
+        SqlQuery().delete_row(table_name="agents",
+                              search_column_name="phone",
                               search_value=del_phone,
+                              )
+        SqlQuery().edit_row(table_name="olx",
+                            search_column_name="sector",
+                            search_value=values['db_value'][10],
+                            edit_param=[
+                                f"sector = 0"
+                            ])
+        SqlQuery().delete_row(table_name="olx_waiting",
+                              search_column_name="sector",
+                              search_value=values['db_value'][10],
                               )
         await message.answer('Пользователь удален')
         await message.answer('Пожалуйста введите <b>пароль</b> чтобы продолжить ...', reply_markup=ReplyKeyboardRemove())

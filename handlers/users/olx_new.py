@@ -101,15 +101,16 @@ async def take_object(message: types.Message, state=FSMContext):
                           search_column_name="id",
                           search_value=values['var_olx_id'])
 
-    await message.answer('Отлично, продолжайте в том же духе)', reply_markup=kb_main_menu)
-
-    await dp.bot.send_message(chat_id='-1001546119458', text=f"Агент: <b>{message.from_user.full_name}</b> взял OLX:\n"
+    await dp.bot.send_message(chat_id='-1001546119458', text=f"Агент: <b>{message.from_user.full_name}</b>\n"
+                                                             f"Взял OLX:\n"
                                                              f"Тип недвижимости: <code>{values['var_type_of_property']}</code>\n"
                                                              f"Район: <code>{values['var_district']}</code>\n"
                                                              f"Участок номер: <code>{values['var_sector']}</code>\n"
                                                              f"Номер телефона: <code>{values['var_phone']}</code>\n"
                                                              f"Номер телефона(который заполнит агент): <code>{values['var_olx_phone']}</code>\n"
                                                              f"Описание: <code>{values['var_information']}</code>\n")
+
+    await message.answer('Отлично, продолжайте в том же духе)', reply_markup=kb_main_menu)
     await state.reset_state()
 
 

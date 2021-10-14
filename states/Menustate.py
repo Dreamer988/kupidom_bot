@@ -8,3 +8,4 @@ class MenuState(StatesGroup):
     Broker = State()
     Broker_Q1 = State()
     OLX = State()
+    Calling = State()

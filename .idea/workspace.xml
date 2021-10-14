@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fbaf17e9-9a14-4bda-9fc9-4f9d966aa6c8" name="Default Changelist" comment="upgrade telegram bot">
-      <change afterPath="$PROJECT_DIR$/handlers/users/system_olx_show.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/users/olx_new.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/olx_new.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/users/olx_waiting.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/olx_waiting.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/system_olx.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/system_olx_add.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/system/kb_olx.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/system/kb_olx.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/sql_query.py" beforeDir="false" afterPath="$PROJECT_DIR$/sql/sql_query.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/states/SystemState.py" beforeDir="false" afterPath="$PROJECT_DIR$/states/SystemState.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +42,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/.env&#10;G:/Python/kupidom_telegram_bot/venv/Lib/site-packages/mysql/__init__.py&#10;G:/Python/kupidom_bot/venv/Lib/site-packages/aiogram/dispatcher/filters/builtin.py" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/handlers/users" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="ReaderModeSettings">

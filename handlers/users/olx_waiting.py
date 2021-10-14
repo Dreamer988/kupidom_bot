@@ -14,14 +14,15 @@ from states import OLXState
 
 @dp.message_handler(state=OLXState.OLX_Waiting)
 async def start_take_olx(message: types.Message, state=FSMContext):
-    if message.text.strip().lower() == 'продолжить':
-        user_id = message.from_user.id
+    user_id = message.from_user.id
 
-        user_information = SqlQuery().get_row(
-            table_name="agents",
-            search_param=[
-                f"telegram_id = {user_id}"
-            ])
+    user_information = SqlQuery().get_row(
+        table_name="agents",
+        search_param=[
+            f"telegram_id = {user_id}"
+        ])
+
+    if message.text.strip().lower() == 'продолжить' and user_information is not None:
 
         user_type_of_property = user_information[0][8]
         user_sector = user_information[0][10]
@@ -61,6 +62,9 @@ async def start_take_olx(message: types.Message, state=FSMContext):
         else:
             await message.answer('OLX-а больше не осталось в базе', reply_markup=kb_main_menu)
             await state.reset_state()
+    elif user_information is None:
+        await message.answer("Вас нету в базе данных агентов", reply_markup=kb_main_menu)
+        await state.reset_state()
     else:
         await message.answer("Переходим в главное меню", reply_markup=kb_main_menu)
         await state.reset_state()

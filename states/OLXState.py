@@ -2,6 +2,8 @@ from aiogram.dispatcher.filters.state import State, StatesGroup
 
 
 class OLXState(StatesGroup):
+    OLX_New = State()
+    OLX_Waiting = State()
     OLX_Object = State()
     OLX_Get = State()
     OLX_Sell = State()

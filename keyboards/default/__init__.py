@@ -7,3 +7,4 @@ from . import search
 from . import by_sell
 from . import rent_apartment
 from . import rent_commerce
+from . import olx

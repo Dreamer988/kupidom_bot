@@ -2,8 +2,11 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
 from keyboards.default.step_back.kb_back import back
 
-kb_olx_object = ReplyKeyboardMarkup(
+kb_olx_new_object_param = ReplyKeyboardMarkup(
     keyboard=[
+        [
+            KeyboardButton(text="Ожидание")
+        ],
         [
             KeyboardButton(text="Взял(-а)"),
             KeyboardButton(text="Продан")
@@ -13,7 +16,8 @@ kb_olx_object = ReplyKeyboardMarkup(
             KeyboardButton(text="Удалить")
         ],
         [
-            KeyboardButton(text="Не мой участок")
+            KeyboardButton(text="Не мой участок"),
+            KeyboardButton(text="Маклер")
         ],
         [
             KeyboardButton(text="Не могу дозвониться"),
@@ -24,8 +28,11 @@ kb_olx_object = ReplyKeyboardMarkup(
     one_time_keyboard=True,
 )
 
-kb_olx_object_back = ReplyKeyboardMarkup(
+kb_olx_new_object_param_back = ReplyKeyboardMarkup(
     keyboard=[
+        [
+            KeyboardButton(text="Ожидание")
+        ],
         [
             KeyboardButton(text="Взял(-а)"),
             KeyboardButton(text="Продан")
@@ -35,7 +42,8 @@ kb_olx_object_back = ReplyKeyboardMarkup(
             KeyboardButton(text="Удалить")
         ],
         [
-            KeyboardButton(text="Не мой участок")
+            KeyboardButton(text="Не мой участок"),
+            KeyboardButton(text="Маклер")
         ],
         [
             KeyboardButton(text="Не могу дозвониться"),

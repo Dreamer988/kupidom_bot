@@ -36,8 +36,8 @@ async def select_district(message: types.Message, state=FSMContext):
         await state.reset_state()
         await message.answer('Маклер добавлен в базу)', reply_markup=kb_main_menu)
         GoogleWork().google_add_row(sheet_id='1o71IQm9tcRyDcYVApTig0Xx6zmEGv6lJq8c401lWW6c',
-                                    name_list='Маклера!',
-                                    array_data=answer['var_broker_correct_number'])
+                                    name_list='Маклера',
+                                    array_data=[answer['var_broker_correct_number']])
     elif filled_in_correctly.lower() == 'нет':
         await state.reset_state()
         await message.answer('Вы отменили отправку', reply_markup=kb_main_menu)

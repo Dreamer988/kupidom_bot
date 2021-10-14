@@ -1,5 +1,4 @@
 from .kb_olx import kb_olx, kb_olx_back
-from .kb_olx_object import kb_olx_object_back, kb_olx_object
 from .kb_system_menu import kb_system_menu
 from .kb_users import kb_users, kb_users_back
 from .kb_users_add import kb_users_add, kb_users_add_back

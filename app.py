@@ -1,6 +1,6 @@
 from sql.sql_query import SqlQuery
 from sql.stock_table_query import create_db_agents, create_db_managers, create_db_bot_timer, create_db_olx, \
-    create_db_olx_verification
+    create_db_olx_verification, create_db_olx_waiting
 from utils.set_bot_commands import set_default_commands
 
 
@@ -30,5 +30,7 @@ if __name__ == '__main__':
         create_db_olx()
     if 'olx_verification' not in db_tables:
         create_db_olx_verification()
+    if 'olx_waiting' not in db_tables:
+        create_db_olx_waiting()
 
     executor.start_polling(dp, on_startup=on_startup)

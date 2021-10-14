@@ -4,6 +4,7 @@ from aiogram.dispatcher.filters import Text
 from aiogram.types import ReplyKeyboardRemove
 
 from filters.user_access import UserAccess
+from keyboards.default.olx import kb_olx_new_or_waiting
 from keyboards.default.send_by_apartment import kb_object_menu, kb_main_menu, kb_yes_or_no
 from keyboards.default.by_sell import kb_menu_by_sell
 from keyboards.default.search import kb_search_menu
@@ -44,5 +45,5 @@ async def get_menu(message: types.Message):
 
 @dp.message_handler(Text(equals='OLX'), state=None)
 async def get_menu(message: types.Message):
-    await message.answer(f"Хотите получить новый OLX?", reply_markup=kb_yes_or_no)
+    await message.answer(f"Какой OLX вы хотите получить?", reply_markup=kb_olx_new_or_waiting)
     await MenuState.OLX.set()

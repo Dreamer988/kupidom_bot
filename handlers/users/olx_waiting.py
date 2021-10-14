@@ -5,6 +5,7 @@ from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
 
+from filters.is_phone import IsPhone
 from keyboards.default.olx import kb_olx_waiting_object_param
 from keyboards.default.send_by_apartment import kb_main_menu
 from loader import dp
@@ -76,7 +77,7 @@ async def take_object(message: types.Message, state=FSMContext):
     await OLXState.OLX_Get.set()
 
 
-@dp.message_handler(state=OLXState.OLX_Get)
+@dp.message_handler(IsPhone(), state=OLXState.OLX_Get)
 async def take_object(message: types.Message, state=FSMContext):
     number_object = message.text
     # Получаем с помощью регулярного выражения только числа

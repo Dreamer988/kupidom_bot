@@ -1,12 +1,17 @@
+import os
+
 import googleapiclient.discovery
 import httplib2
 from oauth2client.service_account import ServiceAccountCredentials
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 class GoogleWork:
 
     def __init__(self):
-        CREDENTAILS_FILE = "G:\Python\kupidom_telegram_bot\creds.json"
+        CREDENTAILS_FILE = os.getenv("CREDENTAILS_FILE")
         self.credentials = ServiceAccountCredentials.from_json_keyfile_name(
             CREDENTAILS_FILE,
             ['https://www.googleapis.com/auth/spreadsheets',

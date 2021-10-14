@@ -73,6 +73,31 @@ def create_db_olx():
         print("DB olx has already been created")
 
 
+def create_db_olx_verification():
+    # Создадим таблицу users для пользователей бота
+    try:
+        query = """
+                CREATE TABLE olx_verification (
+                    `id` INT AUTO_INCREMENT PRIMARY KEY,
+                    `type_of_property` VARCHAR(100),
+                    `district` VARCHAR(100),
+                    `sector` INT,
+                    `phone` VARCHAR (100),
+                    `information` VARCHAR(2000),
+                    `date` DATETIME,
+                    `agent` VARCHAR(100),
+                    `description_agent` VARCHAR(1000),
+                    `action` VARCHAR (100)
+                     )
+                """
+        # Создаем базу данных
+        SqlQuery().create_table(query=query)
+        print("Create table olx successfully")
+    except Error as e:
+        print(e)
+        print("DB olx has already been created")
+
+
 def create_db_bot_timer():
     # Создадим таблицу users для пользователей бота
     try:

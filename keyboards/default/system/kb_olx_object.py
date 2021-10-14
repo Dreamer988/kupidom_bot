@@ -9,6 +9,13 @@ kb_olx_object = ReplyKeyboardMarkup(
             KeyboardButton(text="Продан")
         ],
         [
+            KeyboardButton(text="Не лояльный"),
+            KeyboardButton(text="Удалить")
+        ],
+        [
+            KeyboardButton(text="Не мой участок")
+        ],
+        [
             KeyboardButton(text="Не могу дозвониться"),
             KeyboardButton(text="Вне зоны доступа")
         ]
@@ -22,6 +29,13 @@ kb_olx_object_back = ReplyKeyboardMarkup(
         [
             KeyboardButton(text="Взял(-а)"),
             KeyboardButton(text="Продан")
+        ],
+        [
+            KeyboardButton(text="Не лояльный"),
+            KeyboardButton(text="Удалить")
+        ],
+        [
+            KeyboardButton(text="Не мой участок")
         ],
         [
             KeyboardButton(text="Не могу дозвониться"),

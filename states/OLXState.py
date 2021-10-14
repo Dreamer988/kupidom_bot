@@ -7,3 +7,6 @@ class OLXState(StatesGroup):
     OLX_Sell = State()
     OLX_Call = State()
     OLX_Zone = State()
+    OLX_Sector = State()
+    OLX_Delete = State()
+    OLX_NotLoyal = State()

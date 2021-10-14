@@ -5,22 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fbaf17e9-9a14-4bda-9fc9-4f9d966aa6c8" name="Default Changelist" comment="upgrade telegram bot">
-      <change afterPath="$PROJECT_DIR$/handlers/users/olx.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/keyboards/default/system/kb_olx_object.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/states/OLXState.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/menu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/system.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/system.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/system_olx.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/system_olx.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/system_user_add_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/system_user_add_agent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_menu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/system/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/system/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/sql_query.py" beforeDir="false" afterPath="$PROJECT_DIR$/sql/sql_query.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/google_work/google_work.py" beforeDir="false" afterPath="$PROJECT_DIR$/google_work/google_work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/users/olx.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/olx.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/users/search_by_id.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/search_by_id.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/users/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/start.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/keyboards/default/system/kb_olx_object.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/system/kb_olx_object.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sql/stock_table_query.py" beforeDir="false" afterPath="$PROJECT_DIR$/sql/stock_table_query.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/states/Menustate.py" beforeDir="false" afterPath="$PROJECT_DIR$/states/Menustate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/states/SystemState.py" beforeDir="false" afterPath="$PROJECT_DIR$/states/SystemState.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/states/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/states/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/states/OLXState.py" beforeDir="false" afterPath="$PROJECT_DIR$/states/OLXState.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,8 +48,8 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="add_unversioned_files" value="$PROJECT_DIR$/.env&#10;G:/Python/kupidom_telegram_bot/venv/Lib/site-packages/mysql/__init__.py" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/keyboards/default/system" />
+    <property name="add_unversioned_files" value="$PROJECT_DIR$/.env&#10;G:/Python/kupidom_telegram_bot/venv/Lib/site-packages/mysql/__init__.py&#10;G:/Python/kupidom_bot/venv/Lib/site-packages/aiogram/dispatcher/filters/builtin.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/handlers/groups" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="ReaderModeSettings">
@@ -63,11 +57,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\Python\kupidom_bot\handlers\groups" />
       <recent name="D:\Python\kupidom_bot\keyboards\default\system" />
       <recent name="G:\Python\kupidom_telegram_bot\keyboards\default\system" />
       <recent name="G:\Python\kupidom_telegram_bot\handlers\users" />
       <recent name="G:\Python\kupidom_telegram_bot\filters" />
-      <recent name="G:\Python\kupidom_telegram_bot\keyboards\default\rent_apartment" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="G:\Python\kupidom_telegram_bot" />

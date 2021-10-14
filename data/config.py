@@ -29,7 +29,6 @@ def user_access():
         table_name='agents',
         get_column_name='telegram_id',
     )
-    print(managers_db)
     all_users = []
 
     if managers_db:

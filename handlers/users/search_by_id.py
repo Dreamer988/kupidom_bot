@@ -174,7 +174,8 @@ def search_by_id_apartment(id_row, user_id):
                              f'Имя собственника:  {row[23]}\n' \
                              f'Номер телефона:  {row[24]}\n' \
                              f'Доп.номер телефона:  {row[25]}\n' \
-                             f'Вариант:  {row[35]}\n'
+                             f'Вариант:  {row[35]}\n' \
+                             f'Описание агента: {row[43]}\n'
 
                     if len(row) >= 51:
                         answer = answer + f'Ссылка на сайт:  {row[51]}\n'
@@ -228,7 +229,8 @@ def search_by_id_commerce(id_row, user_id):
                              f'Имя собственника:  {row[25]}\n' \
                              f'Номер телефона:  {row[26]}\n' \
                              f'Доп.номер телефона:  {row[27]}\n' \
-                             f'Вариант:  {row[38]}\n'
+                             f'Вариант:  {row[38]}\n' \
+                             f'Описание агента:  {row[17]}\n'
 
                     if len(row) >= 42:
                         answer = answer + f'Ссылка на сайт:  {row[42]}\n'

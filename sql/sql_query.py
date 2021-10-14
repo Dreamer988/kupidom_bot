@@ -290,12 +290,59 @@ class SqlQuery:
             print(e)
             return False
 
+    def get_column_unique_values(self, table_name=None, get_column_name=None):
+        # Создаем запрос
+        query_get_column = \
+            f"""
+                SELECT
+                DISTINCT 
+                    {get_column_name}
+                FROM
+                    {table_name}      
+            """
+        try:
+            # Выполням созданный запрос
+            self.cursor.execute(query_get_column)
+            # Получаем значения
+            values = self.cursor.fetchall()
+            # Преобразуем кортеж в список
+            values = tuple_to_dict(values)
+            # Возвращаем значения
+            return values
+        except Error as e:
+            print(e)
+            return False
+
     def get_column_by_param(self, table_name=None, get_column_name='*', search_column_name=None, search_value=None):
         # Создаем запрос
         query_get_column_by_param = \
             f"""
                 SELECT
                     {get_column_name}
+                FROM
+                    {table_name}      
+                WHERE
+                    {search_column_name} = '{search_value}'
+            """
+        try:
+            # Выполням созданный запрос
+            self.cursor.execute(query_get_column_by_param)
+            # Получаем значения
+            values = self.cursor.fetchall()
+            # Преобразуем кортеж в список
+            values = tuple_to_dict(values)
+            # Возвращаем значения
+            return values
+        except Error as e:
+            print(e)
+            return False
+
+    def get_count_by_param(self, table_name=None, search_column_name=None, search_value=None):
+        # Создаем запрос
+        query_get_column_by_param = \
+            f"""
+                SELECT
+                    COUNT(*)
                 FROM
                     {table_name}      
                 WHERE

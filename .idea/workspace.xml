@@ -5,23 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fbaf17e9-9a14-4bda-9fc9-4f9d966aa6c8" name="Default Changelist" comment="upgrade telegram bot">
-      <change afterPath="$PROJECT_DIR$/handlers/users/olx_new.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/users/olx_waiting.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/keyboards/default/olx/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/keyboards/default/olx/kb_olx_new_or_waiting.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/keyboards/default/olx/kb_olx_next.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/keyboards/default/olx/kb_olx_waiting_object_param.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/users/system_olx_show.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/users/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/broker.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/broker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/menu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/olx.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/olx.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/system/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/system/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/system/kb_olx_object.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/olx/kb_olx_new_object_param.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/stock_table_query.py" beforeDir="false" afterPath="$PROJECT_DIR$/sql/stock_table_query.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/states/OLXState.py" beforeDir="false" afterPath="$PROJECT_DIR$/states/OLXState.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/users/olx_new.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/olx_new.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/users/olx_waiting.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/olx_waiting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/users/system_olx.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/system_olx_add.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/keyboards/default/system/kb_olx.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/system/kb_olx.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/sql_query.py" beforeDir="false" afterPath="$PROJECT_DIR$/sql/sql_query.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/states/SystemState.py" beforeDir="false" afterPath="$PROJECT_DIR$/states/SystemState.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +48,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/.env&#10;G:/Python/kupidom_telegram_bot/venv/Lib/site-packages/mysql/__init__.py&#10;G:/Python/kupidom_bot/venv/Lib/site-packages/aiogram/dispatcher/filters/builtin.py" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/keyboards/default/olx" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/handlers/users" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="ReaderModeSettings">
@@ -64,8 +56,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="G:\Python\kupidom_bot\keyboards\default\olx" />
       <recent name="G:\Python\kupidom_bot\handlers\users" />
+      <recent name="G:\Python\kupidom_bot\keyboards\default\olx" />
       <recent name="G:\Python\kupidom_bot\handlers\groups" />
       <recent name="D:\Python\kupidom_bot\keyboards\default\system" />
       <recent name="G:\Python\kupidom_telegram_bot\keyboards\default\system" />
@@ -240,7 +232,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634169926058</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="upgrade telegram bot">
+      <created>1634185442550</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1634185442550</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

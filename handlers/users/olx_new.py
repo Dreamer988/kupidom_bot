@@ -68,7 +68,7 @@ async def start_take_olx(message: types.Message, state=FSMContext):
             await message.answer('OLX-а больше не осталось в базе', reply_markup=kb_main_menu)
             await state.reset_state()
     else:
-        await message.answer(reply_markup=kb_main_menu)
+        await message.answer("Переходим в главное меню", reply_markup=kb_main_menu)
         await state.reset_state()
 
 

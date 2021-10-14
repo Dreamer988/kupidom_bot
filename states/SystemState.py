@@ -91,3 +91,6 @@ class SystemState(StatesGroup):
     OLX_Q4 = State()
     OLX_Q5 = State()
     OLX_Q6 = State()
+
+    OLX_Show = State()
+    OLX_Show_CurrentSector = State()

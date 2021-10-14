@@ -3,6 +3,7 @@ import re
 
 from aiogram import types
 from aiogram.dispatcher import FSMContext
+from aiogram.dispatcher.filters import Text
 from aiogram.types.reply_keyboard import ReplyKeyboardRemove
 
 from filters.is_digit import IsDigit
@@ -13,7 +14,7 @@ from states import SystemState
 from sql.sql_query import SqlQuery
 
 
-@dp.message_handler(state=SystemState.OlxStart)
+@dp.message_handler(Text(equals="Добавить"), state=SystemState.OlxStart)
 async def start_system_olx(message: types.Message, state=FSMContext):
     await message.answer('Выберите вид недвижимости', reply_markup=kb_type_of_property)
     await SystemState.OLX_Q1.set()
@@ -39,7 +40,8 @@ async def get_question(message: types.Message, state=FSMContext):
 async def get_question(message: types.Message, state=FSMContext):
     sector = message.text.strip().lower()
     await state.update_data(var_sector=sector)
-    await message.answer('Введите номер телефона в формате (кодстраны + номер телфона)', reply_markup=ReplyKeyboardRemove())
+    await message.answer('Введите номер телефона в формате (кодстраны + номер телфона)',
+                         reply_markup=ReplyKeyboardRemove())
     await SystemState.OLX_Q4.set()
 
 

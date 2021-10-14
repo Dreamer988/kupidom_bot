@@ -21,7 +21,8 @@ from .send_buy_apartment import dp
 from .send_buy_commerce import dp
 from .start import dp
 from .system import dp
-from .system_olx import dp
+from .system_olx_add import dp
+from .system_olx_show import dp
 from .system_user import dp
 from .system_user_add_agent import dp
 from .system_user_add_manager import dp

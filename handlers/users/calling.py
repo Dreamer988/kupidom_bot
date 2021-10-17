@@ -230,7 +230,7 @@ async def delete(message: types.Message, state=FSMContext):
             if row[0] == id_object:
                 now_date = row[-1]
                 now_date = date(int(now_date[-4:]), int(now_date[3:5]), int(now_date[:2]))
-                new_date = now_date + timedelta(days=1)
+                new_date = now_date + timedelta(days=5)
                 activate(type_of_property=type_of_property,
                          id_object=id_object,
                          date_enter=new_date)

@@ -318,6 +318,8 @@ class SqlQuery:
                     {get_column_name}
                 FROM
                     {table_name}      
+                ORDER BY
+                    DESC
             """
         try:
             # Выполням созданный запрос

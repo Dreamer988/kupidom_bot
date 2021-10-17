@@ -5,23 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fbaf17e9-9a14-4bda-9fc9-4f9d966aa6c8" name="Default Changelist" comment="upgrade telegram bot">
-      <change afterPath="$PROJECT_DIR$/keyboards/default/calling/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/keyboards/default/calling/kb_calling.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/active_google_object.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/google_work/google_work.py" beforeDir="false" afterPath="$PROJECT_DIR$/google_work/google_work.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/users/calling.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/calling.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/object.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/object.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/object_active.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/object_active.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/object_delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/object_delete.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/object_edit.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/object_edit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/olx_new.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/olx_new.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/search_by_id.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/search_by_id.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/verification_olx_to_excel.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/verification_olx_to_excel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/users/system_olx_show.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/system_olx_show.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_apartment/kb_menu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/rent_commerce/kb_menu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_commerce/kb_menu.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sql/sql_query.py" beforeDir="false" afterPath="$PROJECT_DIR$/sql/sql_query.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/states/Menustate.py" beforeDir="false" afterPath="$PROJECT_DIR$/states/Menustate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -254,7 +244,21 @@
       <option name="project" value="LOCAL" />
       <updated>1634255612887</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="upgrade telegram bot">
+      <created>1634428807461</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1634428807461</updated>
+    </task>
+    <task id="LOCAL-00008" summary="upgrade telegram bot">
+      <created>1634428987203</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1634428987203</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

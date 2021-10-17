@@ -21,7 +21,6 @@ async def get_first_name(message: types.Message):
     await message.answer('Понял, сейчас отправлю вам полный список !', reply_markup=ReplyKeyboardRemove())
     unique_sector = SqlQuery().get_column_unique_values(table_name="olx",
                                                         get_column_name="sector")
-    print(unique_sector)
     answer = 'Полный список:\n\n'
 
     for sector in unique_sector:

@@ -7,6 +7,7 @@ from aiogram.dispatcher.filters import Text
 from google_work.google_work import GoogleWork
 from keyboards.default.calling import kb_calling
 from keyboards.default.delete_object import kb_delete_type_of_property
+from keyboards.default.rent_apartment import kb_main_menu
 from loader import dp
 from sql.sql_query import SqlQuery
 from states import MenuState, ObjectState
@@ -18,10 +19,10 @@ def search_call_object(user_full_name, values, num_col_date, num_col_user):
     call_object = None
 
     for row in values[1:]:
-        old_date = str(row[num_col_date])
-        old_date = date(int(old_date[-4:]), int(old_date[3:5]), int(old_date[:2]))
+        object_date = str(row[num_col_date])
+        old_date = date(int(object_date[-4:]), int(object_date[3:5]), int(object_date[:2]))
         if new_date > old_date and row[num_col_user].lower().strip() == user_full_name.lower().strip():
-            old_date = new_date
+            new_date = old_date
             call_object = row
         else:
             pass
@@ -81,8 +82,8 @@ async def get_menu(message: types.Message, state=FSMContext):
                      f'<b>Стартовая цена:</b>  <code>{call_object[21]}</code>\n' \
                      f'<b>Цена:</b>  <code>{call_object[22]}</code>\n' \
                      f'<b>Имя собственника:</b>  <code>{call_object[23]}</code>\n' \
-                     f'<b>Номер телефона:</b>  <code>{call_object[24]}</code>\n' \
-                     f'<b>Доп.номер телефона:</b>  <code>{call_object[25]}</code>\n' \
+                     f'<b>Номер телефона:</b>  {call_object[24]}\n' \
+                     f'<b>Доп.номер телефона:</b>  {call_object[25]}\n' \
                      f'<b>Вариант:</b>  <code>{call_object[35]}</code>\n'
             await message.answer(answer, reply_markup=kb_calling)
             await MenuState.CallingMenu.set()
@@ -125,8 +126,8 @@ async def get_menu(message: types.Message, state=FSMContext):
                      f'<b>Стартовая цена:</b>  <code>{call_object[23]}</code>\n' \
                      f'<b>Цена:</b>  <code>{call_object[24]}</code>\n' \
                      f'<b>Имя собственника:</b>  <code>{call_object[25]}</code>\n' \
-                     f'<b>Номер телефона:</b>  <code>{call_object[26]}</code>\n' \
-                     f'<b>Доп.номер телефона:</b>  <code>{call_object[27]}</code>\n' \
+                     f'<b>Номер телефона:</b>  {call_object[26]}\n' \
+                     f'<b>Доп.номер телефона:</b>  {call_object[27]}\n' \
                      f'<b>Вариант:</b>  <code>{call_object[38]}</code>\n'
             await message.answer(answer, reply_markup=kb_calling)
             await MenuState.CallingMenu.set()
@@ -209,11 +210,11 @@ async def delete(message: types.Message, state=FSMContext):
             if row[0] == id_object:
                 now_date = row[-1]
                 now_date = date(int(now_date[-4:]), int(now_date[3:5]), int(now_date[:2]))
-                new_date = now_date + timedelta(days=1)
+                new_date = now_date + timedelta(days=15)
                 activate(type_of_property=type_of_property,
                          id_object=id_object,
                          date_enter=new_date)
-                await message.answer('Объект перенесен, он прийдет к вам позже')
+                await message.answer('Объект перенесен, он прийдет к вам позже', reply_markup=kb_main_menu)
                 await state.reset_state()
             else:
                 num = num + 1
@@ -230,11 +231,11 @@ async def delete(message: types.Message, state=FSMContext):
             if row[0] == id_object:
                 now_date = row[-1]
                 now_date = date(int(now_date[-4:]), int(now_date[3:5]), int(now_date[:2]))
-                new_date = now_date + timedelta(days=5)
+                new_date = now_date + timedelta(days=15)
                 activate(type_of_property=type_of_property,
                          id_object=id_object,
                          date_enter=new_date)
-                await message.answer('Объект перенесен, он прийдет к вам позже')
+                await message.answer('Объект перенесен, он прийдет к вам позже', reply_markup=kb_main_menu)
                 await state.reset_state()
             else:
                 num = num + 1
@@ -251,11 +252,11 @@ async def delete(message: types.Message, state=FSMContext):
             if row[0] == id_object:
                 now_date = row[-1]
                 now_date = date(int(now_date[-4:]), int(now_date[3:5]), int(now_date[:2]))
-                new_date = now_date + timedelta(days=1)
+                new_date = now_date + timedelta(days=15)
                 activate(type_of_property=type_of_property,
                          id_object=id_object,
                          date_enter=new_date)
-                await message.answer('Объект перенесен, он прийдет к вам позже')
+                await message.answer('Объект перенесен, он прийдет к вам позже', reply_markup=kb_main_menu)
                 await state.reset_state()
             else:
                 num = num + 1

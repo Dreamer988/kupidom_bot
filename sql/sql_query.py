@@ -309,7 +309,7 @@ class SqlQuery:
             print(e)
             return False
 
-    def get_column_unique_values(self, table_name=None, get_column_name=None):
+    def get_column_unique_values(self, table_name=None, get_column_name=None, filter_col=None, filter_sort='DESC'):
         # Создаем запрос
         query_get_column = \
             f"""
@@ -319,7 +319,7 @@ class SqlQuery:
                 FROM
                     {table_name}      
                 ORDER BY
-                    DESC
+                    {filter_col} {filter_sort}
             """
         try:
             # Выполням созданный запрос

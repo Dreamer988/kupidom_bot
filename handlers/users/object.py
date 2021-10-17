@@ -29,7 +29,7 @@ async def get_menu(message: types.Message):
 
 @dp.message_handler(Text(equals='Активировать'), state=MenuState.Object)
 async def get_menu(message: types.Message):
-    await message.answer('Введите ID объекта', reply_markup=ReplyKeyboardRemove())
+    await message.answer("Выберите тип недвижимости", reply_markup=kb_delete_type_of_property)
     await ObjectState.Activate.set()
 
 

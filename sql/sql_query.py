@@ -129,6 +129,25 @@ class SqlQuery:
             print(e)
             return False
 
+    def delete_all_row(self, table_name=None):
+        """
+        Удаление строки из базы данных
+        """
+
+        # Создаем запрос
+        query = \
+            f"""
+                DELETE FROM {table_name}
+            """
+        try:
+            # Выполням созданный запрос
+            self.cursor.execute(query)
+            # Сохраняем изменеия в БД
+            self.connection.commit()
+        except Error as e:
+            print(e)
+            return False
+
     def edit_row(self, table_name=None, search_column_name=None, search_value=None, edit_param=None):
         """
         Изменение данных строки

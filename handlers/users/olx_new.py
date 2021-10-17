@@ -315,6 +315,7 @@ async def call_no_object(message: types.Message, state=FSMContext):
                           search_value=values['var_olx_id'])
 
     await message.answer('Отлично, продолжайте в том же духе)', reply_markup=kb_main_menu)
+    await state.reset_state()
 
 
 @dp.message_handler(Text(equals='Маклер'), state=OLXState.OLX_Object)

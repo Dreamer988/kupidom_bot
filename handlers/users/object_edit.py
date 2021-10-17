@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime
 
 from aiogram import types
 from aiogram.dispatcher import FSMContext
@@ -14,6 +14,9 @@ from states import ObjectState
 
 
 # Отслеживаем сообщение по фильтру состояния ObjectState.Edit
+from utils import activate
+
+
 @dp.message_handler(state=ObjectState.Edit)
 async def select_property(message: types.Message, state=FSMContext):
     type_of_property = message.text
@@ -74,6 +77,10 @@ async def select_district(message: types.Message, state=FSMContext):
         answer = await state.get_data()
         await state.reset_state()
         await message.answer('Объект отправлен на изменение)', reply_markup=kb_main_menu)
+        type_of_property = answer['var_type_of_property'].lower().strip()
+        id_object = answer['var_id_object'].strip()
+        activate(type_of_property=type_of_property,id_object=id_object)
+
         GoogleWork().google_add_row(sheet_id='1D41UHIXRICwbW6X_ZCMr0fW5ETB75RGars2Ci7AQFUg',
                                     name_list='Изменение',
                                     array_data=[

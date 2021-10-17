@@ -145,7 +145,7 @@ def search_by_id_apartment(id_row, user_id):
                                             start_col="A",
                                             end_col="BE",
                                             major_dimension="ROWS")
-    print(user_id)
+
     if verified_data_time(user_id) == True:
         for row in values:
             if str(row[0]) == str(id_row):

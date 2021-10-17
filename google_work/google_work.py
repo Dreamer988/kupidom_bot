@@ -54,3 +54,38 @@ class GoogleWork:
                 majorDimension=major_dimension
             ).execute()
             return values["values"]
+
+    def google_edit_values(self, sheet_id, name_list, start_col, end_col, major_dimension, start_row=None, end_row=None,
+                           values=None):
+        if start_row and end_row and values:
+            values = self.service.spreadsheets().values().batchUpdate(
+                spreadsheetId=sheet_id,
+                body={
+                    "valueInputOption": "USER_ENTERED",
+                    "data": [
+                        {
+                            "range": f"'{name_list}'!{start_col}{start_row}:{end_col}{end_row}",
+                            "majorDimension": major_dimension,
+                            "values": [
+                                values
+                            ]
+                        }
+                    ]
+                }
+            ).execute()
+        else:
+            values = self.service.spreadsheets().values().batchUpdate(
+                spreadsheetId=sheet_id,
+                body={
+                    "valueInputOption": "USER_ENTERED",
+                    "data": [
+                        {
+                            "range": f"'{name_list}'!{start_col}:{end_col}",
+                            "majorDimension": major_dimension,
+                            "values": [
+                                values
+                            ]
+                        }
+                    ]
+                }
+            ).execute()

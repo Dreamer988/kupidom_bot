@@ -11,10 +11,6 @@ kb_main_menu = ReplyKeyboardMarkup(
         [
             KeyboardButton(text="Поиск"),
             KeyboardButton(text="Маклер")
-        ],
-        [
-            KeyboardButton(text="OLX"),
-            KeyboardButton(text="Обзвон")
         ]
     ],
     resize_keyboard=True,
@@ -35,10 +31,6 @@ kb_object_menu = ReplyKeyboardMarkup(
         [
             KeyboardButton(text="Добавить фото"),
             KeyboardButton(text="Горящий объект")
-        ],
-        [
-            KeyboardButton(text="OLX"),
-            KeyboardButton(text="Обзвон")
         ]
     ],
     resize_keyboard=True,

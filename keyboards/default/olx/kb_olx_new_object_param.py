@@ -5,7 +5,11 @@ from keyboards.default.step_back.kb_back import back
 kb_olx_new_object_param = ReplyKeyboardMarkup(
     keyboard=[
         [
-            KeyboardButton(text="Ожидание")
+            KeyboardButton(text="Ожидание"),
+            KeyboardButton(text="Главное меню")
+        ],
+        [
+            KeyboardButton(text="Поиск по номеру")
         ],
         [
             KeyboardButton(text="Взял(-а)"),
@@ -31,7 +35,11 @@ kb_olx_new_object_param = ReplyKeyboardMarkup(
 kb_olx_new_object_param_back = ReplyKeyboardMarkup(
     keyboard=[
         [
-            KeyboardButton(text="Ожидание")
+            KeyboardButton(text="Ожидание"),
+            KeyboardButton(text="Главное меню")
+        ],
+        [
+            KeyboardButton(text="Поиск по номеру")
         ],
         [
             KeyboardButton(text="Взял(-а)"),

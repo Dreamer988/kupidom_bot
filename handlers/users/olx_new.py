@@ -4,7 +4,9 @@ import re
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
+from aiogram.types import ReplyKeyboardRemove
 
+from filters.existing_sector import ExistingSector
 from filters.is_digit import IsDigit
 from filters.is_phone import IsPhone
 from google_work.google_work import GoogleWork
@@ -12,7 +14,7 @@ from keyboards.default.olx import kb_olx_new_object_param
 from keyboards.default.send_by_apartment import kb_main_menu
 from loader import dp
 from sql.sql_query import SqlQuery
-from states import OLXState
+from states import OLXState, SearchState
 
 
 @dp.message_handler(state=OLXState.OLX_New)
@@ -219,7 +221,7 @@ async def call_no_object(message: types.Message, state=FSMContext):
     await OLXState.OLX_Sector.set()
 
 
-@dp.message_handler(IsDigit(), state=OLXState.OLX_Sector)
+@dp.message_handler(IsDigit(), ExistingSector(), state=OLXState.OLX_Sector)
 async def sector_edit(message: types.Message, state=FSMContext):
     sector = message.text.strip()
     values = await state.get_data()
@@ -323,7 +325,7 @@ async def call_no_object(message: types.Message, state=FSMContext):
     values = await state.get_data()
     GoogleWork().google_add_row(sheet_id='1o71IQm9tcRyDcYVApTig0Xx6zmEGv6lJq8c401lWW6c',
                                 name_list='Маклера',
-                                array_data=[values['var_phone']])
+                                array_data=[f"998{values['var_phone']}"])
     SqlQuery().delete_row(table_name="olx",
                           search_column_name="id",
                           search_value=values['var_olx_id'])
@@ -393,3 +395,16 @@ async def object_waiting(message: types.Message, state=FSMContext):
         await message.answer('OLX добавлен в таблицу ожидания, теперь можете вернуться к этому OLX позже.',
                              reply_markup=kb_main_menu)
         await state.reset_state()
+
+
+@dp.message_handler(Text(equals='Главное меню'), state=OLXState.OLX_Object)
+async def object_waiting(message: types.Message, state=FSMContext):
+    await message.answer('Главное меню в вашем распоряжении',
+                         reply_markup=kb_main_menu)
+    await state.reset_state()
+
+
+@dp.message_handler(Text(equals='Поиск по номеру'), state=OLXState.OLX_Object)
+async def object_waiting(message: types.Message, state=FSMContext):
+    await message.answer('Введите номер телфона', reply_markup=ReplyKeyboardRemove())
+    await SearchState.SearchNumber_Q1.set()

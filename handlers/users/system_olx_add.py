@@ -6,6 +6,7 @@ from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
 from aiogram.types.reply_keyboard import ReplyKeyboardRemove
 
+from filters.existing_sector import ExistingSector
 from filters.is_digit import IsDigit
 from filters.is_phone import IsPhone
 from keyboards.default.send_by_apartment import kb_type_of_property, kb_district
@@ -36,9 +37,10 @@ async def get_question(message: types.Message, state=FSMContext):
     await SystemState.OLX_Q3.set()
 
 
-@dp.message_handler(IsDigit(), state=SystemState.OLX_Q3)
+@dp.message_handler(IsDigit(), ExistingSector(), state=SystemState.OLX_Q3)
 async def get_question(message: types.Message, state=FSMContext):
     sector = message.text.strip().lower()
+
     await state.update_data(var_sector=sector)
     await message.answer('Введите номер телефона в формате (кодстраны + номер телфона)',
                          reply_markup=ReplyKeyboardRemove())

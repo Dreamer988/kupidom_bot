@@ -4,13 +4,14 @@ import re
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
+from aiogram.types import ReplyKeyboardRemove
 
 from filters.is_phone import IsPhone
 from keyboards.default.olx import kb_olx_waiting_object_param
 from keyboards.default.send_by_apartment import kb_main_menu
 from loader import dp
 from sql.sql_query import SqlQuery
-from states import OLXState
+from states import OLXState, SearchState
 
 
 @dp.message_handler(state=OLXState.OLX_Waiting)
@@ -59,7 +60,7 @@ async def start_take_olx(message: types.Message, state=FSMContext):
                 var_phone=olx_object[0][4],
                 var_information=olx_object[0][5]
             )
-            await OLXState.OLX_Object.set()
+            await OLXState.OLX_Object_Waiting.set()
         else:
             await message.answer('OLX-а больше не осталось в базе', reply_markup=kb_main_menu)
             await state.reset_state()
@@ -71,13 +72,13 @@ async def start_take_olx(message: types.Message, state=FSMContext):
         await state.reset_state()
 
 
-@dp.message_handler(Text(equals='Взял(-а)'), state=OLXState.OLX_Object)
+@dp.message_handler(Text(equals='Взял(-а)'), state=OLXState.OLX_Object_Waiting)
 async def take_object(message: types.Message, state=FSMContext):
     await message.answer('Введите номер телефона который вы укажете в объективке и под фотографиями')
-    await OLXState.OLX_Get.set()
+    await OLXState.OLX_Get_Waiting.set()
 
 
-@dp.message_handler(IsPhone(), state=OLXState.OLX_Get)
+@dp.message_handler(IsPhone(), state=OLXState.OLX_Get_Waiting)
 async def take_object(message: types.Message, state=FSMContext):
     number_object = message.text
     # Получаем с помощью регулярного выражения только числа
@@ -108,15 +109,15 @@ async def take_object(message: types.Message, state=FSMContext):
     await state.reset_state()
 
 
-@dp.message_handler(Text(equals='Продан'), state=OLXState.OLX_Object)
+@dp.message_handler(Text(equals='Продан'), state=OLXState.OLX_Object_Waiting)
 async def sell_object(message: types.Message, state=FSMContext):
     action = message.text
     await state.update_data(var_action=action)
     await message.answer('Введие описание...')
-    await OLXState.OLX_Sell.set()
+    await OLXState.OLX_Sell_Waiting.set()
 
 
-@dp.message_handler(state=OLXState.OLX_Sell)
+@dp.message_handler(state=OLXState.OLX_Sell_Waiting)
 async def sell_object(message: types.Message, state=FSMContext):
     sell_desc = message.text
     values = await state.get_data()
@@ -150,7 +151,7 @@ async def sell_object(message: types.Message, state=FSMContext):
     await state.reset_state()
 
 
-@dp.message_handler(Text(equals='Пропустить'), state=OLXState.OLX_Object)
+@dp.message_handler(Text(equals='Пропустить'), state=OLXState.OLX_Object_Waiting)
 async def skip(message: types.Message, state=FSMContext):
     date = datetime.datetime.today().isoformat(timespec='seconds')
     values = await state.get_data()
@@ -203,7 +204,20 @@ async def skip(message: types.Message, state=FSMContext):
             var_phone=olx_object[0][4],
             var_information=olx_object[0][5]
         )
-        await OLXState.OLX_Object.set()
+        await OLXState.OLX_Object_Waiting.set()
     else:
         await message.answer('OLX-а больше не осталось в базе', reply_markup=kb_main_menu)
         await state.reset_state()
+
+
+@dp.message_handler(Text(equals='Главное меню'), state=OLXState.OLX_Object_Waiting)
+async def object_waiting(message: types.Message, state=FSMContext):
+    await message.answer('Главное меню в вашем распоряжении',
+                         reply_markup=kb_main_menu)
+    await state.reset_state()
+
+
+@dp.message_handler(Text(equals='Поиск по номеру'), state=OLXState.OLX_Object_Waiting)
+async def object_waiting(message: types.Message, state=FSMContext):
+    await message.answer('Введите номер телфона', reply_markup=ReplyKeyboardRemove())
+    await SearchState.SearchNumber_Q1.set()

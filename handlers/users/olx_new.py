@@ -47,7 +47,8 @@ async def start_take_olx(message: types.Message, state=FSMContext):
                                  f"<b>Район:</b> {olx_object[0][2]}\n"
                                  f"<b>Участок номер:</b> {olx_object[0][3]}\n"
                                  f"<b>Номер телефона:</b> {olx_object[0][4]}\n"
-                                 f"<b>Описание:</b> {olx_object[0][5]}\n")
+                                 f"<b>Ссылка:</b> {olx_object[0][5]}\n"
+                                 f"<b>Описание:</b> {olx_object[0][6]}\n")
             await message.answer('Теперь:\n\n'
                                  '---  Если вы взяли OLX и отправили в бот нажмите на кнопку <b>Взял(-а)</b>\n\n'
                                  '---  Если объект продан или его передумали продавать нажмите на кнопку <b>Продан</b>\n\n'
@@ -65,7 +66,8 @@ async def start_take_olx(message: types.Message, state=FSMContext):
                 var_district=olx_object[0][2],
                 var_sector=olx_object[0][3],
                 var_phone=olx_object[0][4],
-                var_information=olx_object[0][5]
+                var_olx_link=olx_object[0][5],
+                var_information=olx_object[0][6]
             )
             await OLXState.OLX_Object.set()
         else:
@@ -351,12 +353,14 @@ async def object_waiting(message: types.Message, state=FSMContext):
                                      'district',
                                      'sector',
                                      'phone',
+                                     'link',
                                      'information',
                                      'date'],
                                values=(values['var_type_of_property'],
                                        values['var_district'],
                                        values['var_sector'],
                                        values['var_phone'],
+                                       values['var_olx_link'],
                                        values['var_information'],
                                        date))
 
@@ -373,18 +377,19 @@ async def object_waiting(message: types.Message, state=FSMContext):
             await message.answer('Пожалуйста, очистите ожидание OLX!', reply_markup=kb_main_menu)
             await state.reset_state()
     else:
-
         SqlQuery().add_row(table_name="olx_waiting",
                            keys=['type_of_property',
                                  'district',
                                  'sector',
                                  'phone',
+                                 'link',
                                  'information',
                                  'date'],
                            values=(values['var_type_of_property'],
                                    values['var_district'],
                                    values['var_sector'],
                                    values['var_phone'],
+                                   values['var_olx_link'],
                                    values['var_information'],
                                    date))
 

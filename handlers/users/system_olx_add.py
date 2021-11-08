@@ -56,11 +56,20 @@ async def get_question(message: types.Message, state=FSMContext):
     decor_number = int(''.join(decor_number)[-9:])
 
     await state.update_data(var_phone=decor_number)
-    await message.answer('Введите информацию', reply_markup=ReplyKeyboardRemove())
+    await message.answer('Введите ссылку', reply_markup=ReplyKeyboardRemove())
     await SystemState.OLX_Q5.set()
 
 
 @dp.message_handler(state=SystemState.OLX_Q5)
+async def get_question(message: types.Message, state=FSMContext):
+    olx_link = message.text
+
+    await state.update_data(var_olx_link=olx_link)
+    await message.answer('Введите информацию', reply_markup=ReplyKeyboardRemove())
+    await SystemState.OLX_Q6.set()
+
+
+@dp.message_handler(state=SystemState.OLX_Q6)
 async def end_system_olx(message: types.Message, state=FSMContext):
     information = message.text.lower()
     await state.update_data(var_information=information)
@@ -72,6 +81,7 @@ async def end_system_olx(message: types.Message, state=FSMContext):
                            'district',
                            'sector',
                            'phone',
+                           'link',
                            'information',
                            'date'
                        ],
@@ -80,6 +90,7 @@ async def end_system_olx(message: types.Message, state=FSMContext):
                            values['var_district'],
                            values['var_sector'],
                            values['var_phone'],
+                           values['var_olx_link'],
                            values['var_information'],
                            date
                        ))

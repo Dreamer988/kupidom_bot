@@ -11,6 +11,10 @@ kb_main_menu = ReplyKeyboardMarkup(
         [
             KeyboardButton(text="Поиск"),
             KeyboardButton(text="Маклер")
+        ],
+        [
+            KeyboardButton(text="OLX"),
+            KeyboardButton(text="Обзвон")
         ]
     ],
     resize_keyboard=True,

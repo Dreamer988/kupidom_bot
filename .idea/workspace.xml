@@ -5,17 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fbaf17e9-9a14-4bda-9fc9-4f9d966aa6c8" name="Default Changelist" comment="upgrade telegram bot">
-      <change afterPath="$PROJECT_DIR$/filters/existing_sector.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/users/calling.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/calling.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/users/olx_new.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/olx_new.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/users/olx_waiting.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/olx_waiting.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/users/system_olx_add.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/system_olx_add.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/system_olx_show.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/system_olx_show.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/olx/kb_olx_new_object_param.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/olx/kb_olx_new_object_param.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/default/olx/kb_olx_waiting_object_param.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/olx/kb_olx_waiting_object_param.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/send_by_apartment/kb_menu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/states/OLXState.py" beforeDir="false" afterPath="$PROJECT_DIR$/states/OLXState.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/stock_table_query.py" beforeDir="false" afterPath="$PROJECT_DIR$/sql/stock_table_query.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -276,7 +272,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634509438920</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="upgrade telegram bot">
+      <created>1635522658161</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1635522658161</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

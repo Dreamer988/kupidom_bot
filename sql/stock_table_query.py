@@ -61,6 +61,7 @@ def create_db_olx():
                     `district` VARCHAR(100),
                     `sector` INT,
                     `phone` VARCHAR (100),
+                    `link` VARCHAR(1000),
                     `information` VARCHAR(2000),
                     `date` DATETIME
                      )
@@ -83,6 +84,7 @@ def create_db_olx_waiting():
                     `district` VARCHAR(100),
                     `sector` INT,
                     `phone` VARCHAR (100),
+                    `link` VARCHAR(1000),
                     `information` VARCHAR(2000),
                     `date` DATETIME
                      )

@@ -101,8 +101,8 @@ async def get_menu(message: types.Message, state=FSMContext):
         call_object = search_call_object(
             user_full_name=user_full_name,
             values=values,
-            num_col_date=43,
-            num_col_user=41
+            num_col_date=42,
+            num_col_user=40
         )
         if call_object:
             await state.update_data(var_id_object=call_object[0])
@@ -145,8 +145,8 @@ async def get_menu(message: types.Message, state=FSMContext):
         call_object = search_call_object(
             user_full_name=user_full_name,
             values=values,
-            num_col_date=37,
-            num_col_user=35
+            num_col_date=36,
+            num_col_user=34
         )
         if call_object:
             await state.update_data(var_id_object=call_object[0])

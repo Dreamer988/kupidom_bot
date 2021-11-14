@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fbaf17e9-9a14-4bda-9fc9-4f9d966aa6c8" name="Default Changelist" comment="upgrade telegram bot" />
+    <list default="true" id="fbaf17e9-9a14-4bda-9fc9-4f9d966aa6c8" name="Default Changelist" comment="upgrade telegram bot">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/users/system_olx_add.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/system_olx_add.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -278,7 +281,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636370095343</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="upgrade telegram bot">
+      <created>1636899932587</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1636899932587</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

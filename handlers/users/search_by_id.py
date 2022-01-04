@@ -139,7 +139,7 @@ def add_point(telegram_id):
 
 
 # Квартиры
-def search_by_id_apartment(id_row, user_id):
+def search_by_id_apartment(id_row, user_id, user_name):
     values = GoogleWork().google_get_values(sheet_id="1_OlIeV7jYMN5H6zXZOqVsKrfuDjlJwpkhGoIjOQIUkg",
                                             name_list="Общая база",
                                             start_col="A",
@@ -148,7 +148,7 @@ def search_by_id_apartment(id_row, user_id):
 
     if verified_data_time(user_id) == True:
         for row in values:
-            if str(row[0]) == str(id_row):
+            if str(row[0]) == str(id_row) and str(row[35]) == str(user_name):
                 try:
                     answer = f'ID:  {row[0]}\n' \
                              f'Квартал:  {row[1]}\n' \
@@ -193,7 +193,7 @@ def search_by_id_apartment(id_row, user_id):
 
 
 # Коммерция
-def search_by_id_commerce(id_row, user_id):
+def search_by_id_commerce(id_row, user_id, user_name):
     values = GoogleWork().google_get_values(sheet_id="1Q2jSOeCYi2FPVs0gI7vLQVljw1DfYKBHdUq7HpZVz4k",
                                             name_list="Общая база",
                                             start_col="A",
@@ -202,7 +202,7 @@ def search_by_id_commerce(id_row, user_id):
 
     if verified_data_time(user_id) == True:
         for row in values:
-            if str(row[0]) == str(id_row):
+            if str(row[0]) == str(id_row) and str(row[40]) == str(user_name):
                 try:
                     answer = f'ID:  {row[0]}\n' \
                              f'Район:  {row[1]}\n' \
@@ -249,7 +249,7 @@ def search_by_id_commerce(id_row, user_id):
 
 
 # Дома
-def search_by_id_home(id_row, user_id):
+def search_by_id_home(id_row, user_id, user_name):
     values = GoogleWork().google_get_values(sheet_id="1zLwG9oJQU3wHSe0OQgOO27v7EDF_CCWrRVji1qr3dqs",
                                             name_list="Общая база",
                                             start_col="A",
@@ -257,7 +257,7 @@ def search_by_id_home(id_row, user_id):
                                             major_dimension="ROWS")
     if verified_data_time(user_id) == True:
         for row in values:
-            if str(row[0]) == str(id_row):
+            if str(row[0]) == str(id_row) and str(row[34]) == str(user_name):
                 try:
                     answer = f'ID:  {row[0]}\n' \
                              f'Район:  {row[1]}\n' \
@@ -302,7 +302,7 @@ def search_by_id_home(id_row, user_id):
 
 
 # Аренда Квартиры
-def search_by_id_apartment_rent(id_row, user_id):
+def search_by_id_apartment_rent(id_row, user_id, user_name):
     values = GoogleWork().google_get_values(sheet_id="1KA7eydXuGpmPDrYWisGQOnGHpeXEnlCv2ciBEcOMxNw",
                                             name_list="Квартиры",
                                             start_col="A",
@@ -310,7 +310,7 @@ def search_by_id_apartment_rent(id_row, user_id):
                                             major_dimension="ROWS")
     if verified_data_time(user_id) == True:
         for row in values:
-            if str(row[0]) == str(id_row):
+            if str(row[0]) == str(id_row) and str(row[40]) == str(user_name):
                 try:
                     answer = f'ID:  {row[0]}\n' \
                              f'Квартал:  {row[1]}\n' \
@@ -358,7 +358,7 @@ def search_by_id_apartment_rent(id_row, user_id):
 
 
 # Аренда Коммерция
-def search_by_id_commerce_rent(id_row, user_id):
+def search_by_id_commerce_rent(id_row, user_id, user_name):
     values = GoogleWork().google_get_values(sheet_id="1KA7eydXuGpmPDrYWisGQOnGHpeXEnlCv2ciBEcOMxNw",
                                             name_list="Коммерция",
                                             start_col="A",
@@ -366,7 +366,7 @@ def search_by_id_commerce_rent(id_row, user_id):
                                             major_dimension="ROWS")
     if verified_data_time(user_id) == True:
         for row in values:
-            if str(row[0]) == str(id_row):
+            if str(row[0]) == str(id_row) and str(row[38]) == str(user_name):
                 try:
                     answer = f'ID:  {row[0]}\n' \
                              f'Район:  {row[1]}\n' \
@@ -411,7 +411,7 @@ def search_by_id_commerce_rent(id_row, user_id):
 
 
 # Аренда Дома
-def search_by_id_home_rent(id_row, user_id):
+def search_by_id_home_rent(id_row, user_id, user_name):
     values = GoogleWork().google_get_values(sheet_id="1KA7eydXuGpmPDrYWisGQOnGHpeXEnlCv2ciBEcOMxNw",
                                             name_list="Дома",
                                             start_col="A",
@@ -419,7 +419,7 @@ def search_by_id_home_rent(id_row, user_id):
                                             major_dimension="ROWS")
     if verified_data_time(user_id) == True:
         for row in values:
-            if str(row[0]) == str(id_row):
+            if str(row[0]) == str(id_row) and str(row[34]) == str(user_name):
                 try:
                     answer = f'ID:  {row[0]}\n' \
                              f'Район:  {row[1]}\n' \
@@ -475,48 +475,49 @@ async def get_row_word(message: types.Message, state=FSMContext):
 async def get_id_row(message: types.Message, state=FSMContext):
     id_row = message.text
     user_id = message.from_user.id
+    user_name = message.from_user.full_name
     if len(id_row) >= 6:
         data = await state.get_data()
         word_row = data['var_word_id']
 
         if word_row == 'К' or word_row == 'Н' or word_row == 'И':
             await message.answer(f"Поиск в базе квартир...")
-            answer = search_by_id_apartment(id_row, user_id)
+            answer = search_by_id_apartment(id_row, user_id, user_name)
             await message.answer(f"{answer}")
             await message.answer(f"Выберите нужный вам вариант", reply_markup=kb_go_start)
             await SearchState.SearchId_Q3.set()
 
         elif word_row == 'КМ':
             await message.answer(f"Поиск в базе коммерции...")
-            answer = search_by_id_commerce(id_row, user_id)
+            answer = search_by_id_commerce(id_row, user_id, user_name)
             await message.answer(f"{answer}")
             await message.answer(f"Выберите нужный вам вариант", reply_markup=kb_go_start)
             await SearchState.SearchId_Q3.set()
 
         elif word_row == 'Д':
             await message.answer(f"Поиск в базе домов...")
-            answer = search_by_id_home(id_row, user_id)
+            answer = search_by_id_home(id_row, user_id, user_name)
             await message.answer(f"{answer}")
             await message.answer(f"Выберите нужный вам вариант", reply_markup=kb_go_start)
             await SearchState.SearchId_Q3.set()
 
         elif word_row == 'АК':
             await message.answer(f"Поиск в базе аренды квартир...")
-            answer = search_by_id_apartment_rent(id_row, user_id)
+            answer = search_by_id_apartment_rent(id_row, user_id, user_name)
             await message.answer(f"{answer}")
             await message.answer(f"Выберите нужный вам вариант", reply_markup=kb_go_start)
             await SearchState.SearchId_Q3.set()
 
         elif word_row == 'АКМ':
             await message.answer(f"Поиск в базе аренды коммерции...")
-            answer = search_by_id_commerce_rent(id_row, user_id)
+            answer = search_by_id_commerce_rent(id_row, user_id, user_name)
             await message.answer(f"{answer}")
             await message.answer(f"Выберите нужный вам вариант", reply_markup=kb_go_start)
             await SearchState.SearchId_Q3.set()
 
         elif word_row == 'АД':
             await message.answer(f"Поиск в базе аренды домов...")
-            answer = search_by_id_home_rent(id_row, user_id)
+            answer = search_by_id_home_rent(id_row, user_id, user_name)
             await message.answer(f"{answer}")
             await message.answer(f"Выберите нужный вам вариант", reply_markup=kb_go_start)
             await SearchState.SearchId_Q3.set()

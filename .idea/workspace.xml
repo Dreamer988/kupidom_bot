@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fbaf17e9-9a14-4bda-9fc9-4f9d966aa6c8" name="Default Changelist" comment="upgrade telegram bot">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/users/system_olx_add.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/system_olx_add.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/users/search_by_id.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/search_by_id.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
